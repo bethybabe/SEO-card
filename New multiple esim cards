@@ -1,0 +1,236 @@
+<style>
+    #overall {
+        font-family: 'Arial', sans-serif;
+        margin: 0 auto;
+        padding: 0;
+        background-color: #fff;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
+        flex-wrap: wrap;
+        max-width: 1200px;
+    }
+
+    .card {
+        background-color: #0a1fd7;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        width: calc(33.333% - 20px);
+        margin: 10px;
+        color: white;
+        display: flex;
+        flex-direction: column;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+    }
+
+    .card-image {
+        width: 100%;
+        height: 180px;
+        overflow: hidden;
+        position: relative;
+    }
+
+    .card-image img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.3s ease;
+    }
+
+    .card:hover .card-image img {
+        transform: scale(1.05);
+    }
+
+    .card-image a {
+        display: block;
+        width: 100%;
+        height: 100%;
+    }
+
+    h3.card-header {
+        background-color: #0a1fd7;
+        padding: 20px;
+        text-align: center;
+        font-size: 1.3em;
+        margin: 0;
+        color: white;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+
+    .card-content {
+        padding: 12px 15px;
+        flex-grow: 1;
+    }
+
+    .card-content ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+    }
+
+    .card-content li {
+        padding: 10px 0;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        color: #ffffff;
+        transition: all 0.2s ease;
+    }
+
+    .card-content li:hover {
+        background-color: rgba(255, 255, 255, 0.03);
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+
+    .card-content ul li span:first-child {
+        font-weight: bold;
+    }
+
+    .card-content li span {
+        font-size: 13px;
+    }
+
+    .card-content li:last-child {
+        border-bottom: none;
+    }
+
+    .card-footer {
+        margin-top: auto;
+        text-align: center;
+        padding: 15px;
+    }
+
+   .btn {
+    background-color: transparent; /* 改为透明背景 */
+    color: #ffffff;
+    border: 2px solid #ffffff; /* 添加白色边框 */
+    padding: 12px 30px;
+    font-size: 16px;
+    border-radius: 10px;
+    text-decoration: none;
+    cursor: pointer;
+    width: 80%;
+    max-width: 250px;
+    display: inline-block;
+    transition: all 0.3s ease;
+    font-weight: 600;
+    box-shadow: none; /* 移除原有的阴影 */
+}
+
+.btn:hover {
+    background-color: rgba(255, 255, 255, 0.1); /* 悬停时添加轻微的白色背景 */
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
+}
+
+a.btn {
+    color: #ffffff !important;
+    text-decoration: none;
+}
+
+@media (max-width: 768px) {
+    .btn {
+        width: 90%;
+        padding: 15px 30px;
+    }
+}
+
+    @media (max-width: 768px) {
+        .card {
+            width: calc(100% - 20px);
+            max-width: 400px;
+            margin: 10px auto;
+        }
+
+        .btn {
+            width: 90%;
+            padding: 15px 30px;
+        }
+
+        .card-image {
+            height: 200px;
+        }
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+        .card {
+            width: calc(50% - 20px);
+        }
+    }
+</style>
+
+<div id="overall">
+    <div class="card">
+        <div class="card-image">
+            <a href="https://www.trip.com/things-to-do/detail/40019703/">
+                <img src="https://ak-d.tripcdn.com/images/0353c12000hlc6lwx5AE0_C_960_660_Q50.png_.webp" alt="USA & Canada 5G eSIM">
+            </a>
+        </div>
+        <h3 class="card-header">
+            USA & Canada 5G eSIM
+        </h3>
+        <div class="card-content">
+            <ul>
+                <li><span>Coverage</span><span>USA & Canada (excluding Guam and Saipan)</span></li>
+                <li><span>Data</span><span>500MB/day - Total 50GB</span></li>
+                <li><span>Validity</span><span>1-30 Days</span></li>
+                <li><span>Price</span><span>from US$1.17</span></li>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <a class="btn" href="https://www.trip.com/things-to-do/detail/40019703/">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-image">
+            <a href="https://www.trip.com/things-to-do/detail/53370153/">
+                <img src="https://ak-d.tripcdn.com/images/0353612000i046fqr7246_C_568_320_Q50.jpg_.webp" alt="USA 5G eSIM">
+            </a>
+        </div>
+        <h3 class="card-header">
+            USA 5G eSIM
+        </h3>
+        <div class="card-content">
+            <ul>
+                <li><span>Coverage</span><span>USA (excluding Guam and Saipan)</span></li>
+                <li><span>Data</span><span>5G high-speed network</span></li>
+                <li><span>Validity</span><span>1-30 Days</span></li>
+                <li><span>Price</span><span>from US$0.7</span></li>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <a class="btn" href="https://www.trip.com/things-to-do/detail/53370153/">Buy Now</a>
+        </div>
+    </div>
+
+    <div class="card">
+        <div class="card-image">
+            <a href="https://www.trip.com/things-to-do/detail/70216963/">
+                <img src="https://ak-d.tripcdn.com/images/0354y12000et7wiay33D3_C_568_320_Q50.jpg_.webp" alt="USA eSIM Daypass">
+            </a>
+        </div>
+        <h3 class="card-header">
+            USA eSIM Daypass
+        </h3>
+        <div class="card-content">
+            <ul>
+                <li><span>Coverage</span><span>USA</span></li>
+                <li><span>Data</span><span>Daypass/Data Package</span></li>
+                <li><span>Validity</span><span>1-30 Days</span></li>
+                <li><span>Price</span><span>from US$0.84</span></li>
+            </ul>
+        </div>
+        <div class="card-footer">
+            <a class="btn" href="https://www.trip.com/things-to-do/detail/70216963/">Buy Now</a>
+        </div>
+    </div>
+</div>
