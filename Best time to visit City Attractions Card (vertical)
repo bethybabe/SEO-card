@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Best Time to Visit Shanghai</title>
+    <style>
+        :root {
+            --primary: #0d47a1;
+            --primary-light: #e3f2fd;
+            --primary-dark: #002171;
+            --accent: #ff6e40;
+            --text: #212121;
+            --text-light: #757575;
+            --text-white: #ffffff;
+            --bg: #ffffff;
+            --bg-alt: #f5f7fa;
+            --border: #e0e0e0;
+            --radius: 12px;
+            --shadow-sm: 0 4px 6px rgba(0,0,0,0.05);
+            --shadow: 0 10px 20px rgba(0,0,0,0.08);
+            --transition: all 0.3s ease;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'SF Pro Display', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: var(--bg-alt);
+            padding: 2rem 0;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 1rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            font-weight: 700;
+            text-align: center;
+            margin-bottom: 2.5rem;
+            color: var(--primary);
+        }
+
+        .section-title::after {
+            content: none;
+        }
+
+        .attraction-card {
+            display: flex;
+            background: var(--bg);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            margin-bottom: 2.5rem;
+            transition: var(--transition);
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 30px rgba(0,0,0,0.1);
+        }
+
+        .attraction-img {
+            flex: 0 0 40%;
+            background-size: cover;
+            background-position: center;
+            min-height: 300px;
+        }
+
+        .attraction-content {
+            flex: 0 0 60%;
+            padding: 2rem;
+        }
+
+        .attraction-title {
+            font-size: 1.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: var(--primary);
+        }
+
+        .best-time {
+            display: inline-block;
+            background: var(--primary-light);
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            margin-bottom: 1.5rem;
+            font-weight: 500;
+            color: var(--primary-dark);
+        }
+
+        .ticket-btn {
+            display: inline-block;
+            background: var(--primary);
+            color: var(--text-white) !important;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            transition: var(--transition);
+        }
+
+        .ticket-btn:hover {
+            background: var(--primary-dark);
+            transform: translateY(-2px);
+        }
+
+        .footer-note {
+            text-align: center;
+            margin-top: 3rem;
+            color: var(--text-light);
+            font-size: 0.9rem;
+        }
+
+        @media (max-width: 900px) {
+            .attraction-card {
+                flex-direction: column;
+            }
+            
+            .attraction-img {
+                flex: 0 0 200px;
+                min-height: 200px;
+            }
+            
+            .attraction-content {
+                flex: 1;
+            }
+        }
+
+        @media (max-width: 600px) {
+            .section-title {
+                font-size: 1.75rem;
+            }
+            
+            .attraction-content {
+                padding: 1.5rem;
+            }
+            
+            .attraction-title {
+                font-size: 1.3rem;
+            }
+            
+            .best-time {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        
+        <div class="attraction-card">
+            <div class="attraction-img" style="background-image: url('https://images.unsplash.com/photo-1474181487882-5abf3f0ba6c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80')"></div>
+            <div class="attraction-content">
+                <h3 class="attraction-title">The Bund </h3>
+                <div class="best-time">Oct-Nov or Apr-May; 5-7pm for sunset</div>
+                
+                <p>Skip summer when the Bund feels like a sauna with hazy skies. Come spring or fall for crisp air and picture-perfect skyline views. Weekends? Total madhouse after dark. Sunrise brings locals doing tai chi with zero tourists - worth the early alarm. If you must visit in summer, go at dawn before the heat kicks in.</p>
+                
+                <a href="#" class="ticket-btn">Check More</a>
+            </div>
+        </div>
+        
+        <div class="attraction-card">
+            <div class="attraction-img" style="background-image: url('https://ak-d.tripcdn.com/images/0101v1200096jdzuzD63E_C_670_376_Q70.webp?proc=source%2ftrip&proc=source%2ftrip')"></div>
+            <div class="attraction-content">
+                <h3 class="attraction-title">Yu Garden & Old Street </h3>
+                <div class="best-time">Weekday mornings 8-10am; March for blossoms</div>
+                
+                <p>By noon, Yu Garden transforms from Ming Dynasty serenity to tourist hell. Get there at 8:30am opening (especially weekdays) or don't bother. The early wakeup rewards you with empty pavilions and rockeries - plus the surrounding market vendors aren't fully caffeinated enough to hassle you yet. February's Lantern Festival packs the place, but the installations are genuinely spectacular.</p>
+                
+                <a href="https://www.trip.com/guide/attraction/yu-garden-tickets.html" class="ticket-btn">Check More</a>
+            </div>
+        </div>
+        
+        <div class="attraction-card">
+            <div class="attraction-img" style="background-image: url('https://ak-d.tripcdn.com/images/0100812000f6pvv945ED1_C_1200_800_Q70.jpg?proc=source%2ftrip')"></div>
+            <div class="attraction-content">
+                <h3 class="attraction-title">Shanghai Tower</h3>
+                <div class="best-time">Weekdays 3-5pm in Oct-Nov</div>
+                
+                <p>Nothing worse than dropping 180 yuan for fog views from the world's second-tallest building. Skip summer completely - you'll see nothing but haze. Late fall brings clear skies after cold fronts push out the pollution. Go late afternoon when you can catch daylight views that transition to the full city light show. And book online - it's 20% cheaper and skips the hour-long ticket queue.</p>
+                
+                <a href="https://www.trip.com/guide/attraction/shanghai-tower-tickets.html" class="ticket-btn">Check More</a>
+            </div>
+        </div>
+
+        <div class="attraction-card">
+            <div class="attraction-img" style="background-image: url('https://ak-d.tripcdn.com/images/01055120008ji2uc75021_C_760_506_R5.jpg?proc=source%2ftrip&proc=source/trip')"></div>
+            <div class="attraction-content">
+                <h3 class="attraction-title">Disneyland Shanghai</h3>
+                <div class="best-time">Tues-Thurs in Apr or Oct</div>
+                
+                <p>Avoid Chinese school holidays unless you enjoy 3-hour waits for Tron. Weekday visits in spring or fall are your golden ticket - good weather and half the crowds. Shanghai locals bail when rain's forecast, so drizzly days mean walk-on rides. Stick around after 7pm when families leave and you'll find Pirates of Caribbean suddenly queue-free. Grab the Fastpass for Soaring Over the Horizon the minute you enter or kiss it goodbye.</p>
+                
+                <a href="https://www.trip.com/guide/attraction/shanghai-disneyland-tickets.html" class="ticket-btn">Check More</a>
+            </div>
+        </div>
+
+        <div class="attraction-card">
+            <div class="attraction-img" style="background-image: url('https://ak-d.tripcdn.com/images/0102n12000j11dauo6575_C_1200_800_Q70.jpg?proc=source%2ftrip')"></div>
+            <div class="attraction-content">
+                <h3 class="attraction-title">Zhujiajiao Water Town</h3>
+                <div class="best-time">Weekdays before 10am; April-May</div>
+                
+                <p>Tour buses invade this ancient water town around 10:30am daily, turning peaceful canals into a floating traffic jam. Arrive at 8am for empty stone bridges and reflections in still water. If you're serious about photos, book a driver the night before - the morning light is magical. Skip weekends entirely - that cute tea house you saw on Instagram will be packed with 200 people taking the exact same shot.</p>
+                
+                <a href="https://www.trip.com/travel-guide/attraction/shanghai/zhujiajiao-ancient-town-79170/" class="ticket-btn">Check More</a>
+            </div>
+        </div>
+        
+        <p class="footer-note">Prices and times updated May 2025. Things change - check before you go.</p>
+    </div>
+</body>
+</html> 
