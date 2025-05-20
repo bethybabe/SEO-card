@@ -1,0 +1,107 @@
+<style>
+       
+        #tg-header .top {
+            max-width:1200px;
+            margin:0 auto;
+            display:flex;
+            align-items:center;
+            justify-content: space-between;
+        }
+
+        #tg-header .top > div {
+            width:48%;
+            display:inline;
+        }
+
+        #tg-header .top .info > span {
+            width:100%;
+            display:inline-block;
+        }
+        #tg-header .right-box {
+            padding:50px;
+            border-radius:5px;
+        }
+
+
+        #tg-header .right-box {
+            background-color: #f5f5f5;
+        }
+
+        #tg-header .top .cover {
+            width:100%;
+            border-radius:10px;
+        }
+
+        #tg-header button {
+            width: 100%;
+            padding: 20px 0;
+            margin: 10px 0;
+            border-radius:5px;
+            background-image: linear-gradient(270deg, rgb(30, 84, 249) 0%, rgb(50, 100, 255) 100%);
+            border: none;
+        }
+
+        #tg-header button a {
+            color:#ffffff;
+            text-decoration:none;
+            font-size:16px;
+            font-weight:600;
+            width:100%;
+            display:inline-block;
+        } 
+
+        #tg-header h1 {
+            font-size:28px !important;
+            margin:0 0 15px 0 !important;
+        }
+
+        #tg-header .about p {
+            font-size:14px;
+            line-height:1.5;
+        }
+
+        #tg-header .info span {
+            font-size:13px;
+            line-height:1.5;
+        }
+
+        @media only screen and (max-width: 960px) {
+
+            #tg-header .top
+            {
+                display:block;
+            }
+
+            #tg-header .top > div
+            {
+               display:block;
+               width:100%;
+               margin-bottom:10px;
+            }
+        }
+
+    </style>
+     <div id="tg-header">
+        <div class="top">
+            <div class="left">
+                <img class="cover" src="https://ak-d.tripcdn.com/images/0101v1200096jdzuzD63E_C_670_376_Q70.webp?proc=source%2ftrip&proc=source%2ftrip">
+            </div>
+            <div class="right">
+                <div class="right-box">
+                    <h1>Yu Garden</h1>
+                    <div class="about">
+                        <p>
+                           Yu Garden, right in central Shanghai's Old City, is a gorgeous Ming-style garden that's been wowing visitors for centuries. Built by a son for his dad, this peaceful spot has everything you'd want in a traditional Chinese garden - pretty ponds, cool bridges that zigzag (to trick those pesky evil spirits!), and some seriously impressive stone and wood carvings. When you're done exploring, the surrounding bazaar is perfect for snack-hunting and souvenir shopping!
+                        
+                                  </p>
+                    </div>
+                    <div class="info">
+                        <span class="operationhours">Opening Hours:09:00-15:30/16:30</span>
+                        <span class="address">Yu Garden Address: Shanghai Yuyuan Tourism Business District
+                            </span>
+                    </div>
+                </div>
+                <button><a href="https://www.trip.com/travel-guide/attraction/shanghai/yu-garden-75615/">Buy Discounted Tickets from $4.78</a></button>
+            </div>
+        </div>
+    </div>
