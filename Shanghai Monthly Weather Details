@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanghai Monthly Weather Guide</title>
+    <style>
+        :root {
+            --primary: #1e88e5;
+            --primary-light: #e3f2fd;
+            --accent: #ff6d00;
+            --text: #333;
+            --text-light: #666;
+            --bg: #fff;
+            --border: #e0e0e0;
+            --shadow: 0 4px 12px rgba(0,0,0,0.08);
+            --radius: 8px;
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui, sans-serif;
+            line-height: 1.6;
+            color: var(--text);
+            background: #f9fafb;
+            padding: 0;
+            margin: 0;
+        }
+
+        .weather-tabs {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 0 1rem;
+        }
+
+         
+
+        .month-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 8px;
+            margin-bottom: 1.5rem;
+        }
+
+        .month-tab {
+            background: var(--bg);
+            padding: 12px 8px;
+            text-align: center;
+            cursor: pointer;
+            border-radius: var(--radius);
+            transition: var(--transition);
+            border: 1px solid var(--border);
+            font-weight: 500;
+            color: var(--text-light);
+            text-decoration: none;
+            box-shadow: var(--shadow);
+        }
+
+        .month-tab:hover {
+            background: var(--primary-light);
+            color: var(--primary);
+        }
+
+        .month-tab.active {
+            background: var(--bg);
+            color: var(--primary);
+            font-weight: 600;
+            border: 2px solid var(--accent);
+        }
+
+        .month-content {
+            display: none;
+            padding: 1.5rem;
+            background: var(--bg);
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+            border: 1px solid var(--border);
+            animation: fadeIn 0.4s ease;
+            margin-top: 1rem;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        #jan.month-content {
+            display: block;
+        }
+
+        .weather-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 1rem 0;
+        }
+
+        .weather-table th {
+            background: var(--primary-light);
+            color: var(--primary);
+            padding: 12px;
+            text-align: left;
+        }
+
+        .weather-table td {
+            padding: 12px;
+            border: 1px solid var(--border);
+            vertical-align: top;
+        }
+
+        .region-title {
+            font-weight: 600;
+            color: var(--primary);
+            margin-top: 0;
+        }
+
+        .local-tip {
+            background: #fff9e6;
+            padding: 1rem;
+            margin-top: 1.5rem;
+            border-left: 4px solid #ffd700;
+            border-radius: 0 var(--radius) var(--radius) 0;
+        }
+
+        .local-tip:before {
+            content: "🗝️ Insider Tip:";
+            font-weight: 600;
+            display: inline-block;
+            margin-right: 6px;
+        }
+
+        .emoji {
+            font-size: 1.2em;
+            vertical-align: middle;
+            margin-right: 4px;
+        }
+
+        @media (max-width: 768px) {
+            .month-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 480px) {
+            .month-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="weather-tabs">
+       
+        
+        <!-- Month Tabs -->
+        <div class="month-grid">
+            <a href="#jan" class="month-tab active"><span class="emoji">❄️</span> Jan</a>
+            <a href="#feb" class="month-tab"><span class="emoji">🧣</span> Feb</a>
+            <a href="#mar" class="month-tab"><span class="emoji">🌸</span> Mar</a>
+            <a href="#apr" class="month-tab"><span class="emoji">🌧️</span> Apr</a>
+            <a href="#may" class="month-tab"><span class="emoji">🌿</span> May</a>
+            <a href="#jun" class="month-tab"><span class="emoji">☔</span> Jun</a>
+        </div>
+
+        <div class="month-grid">
+            <a href="#jul" class="month-tab"><span class="emoji">🔥</span> Jul</a>
+            <a href="#aug" class="month-tab"><span class="emoji">🌪️</span> Aug</a>
+            <a href="#sep" class="month-tab"><span class="emoji">🍂</span> Sep</a>
+            <a href="#oct" class="month-tab"><span class="emoji">🎃</span> Oct</a>
+            <a href="#nov" class="month-tab"><span class="emoji">🌥️</span> Nov</a>
+            <a href="#dec" class="month-tab"><span class="emoji">🎄</span> Dec</a>
+        </div>
+
+        <!-- Month Contents -->
+        <div id="jan" class="month-content">
+            <h3 class="region-title">January in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 1°C to 8°C<br>Feels like: -2°C to 5°C</td>
+                    <td>🌧️ 74mm over 9-11 days<br>☁️ Occasional light snow</td>
+                    <td>☀️ 4-5 hours daily<br>🌇 5:00pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>January brings Shanghai's coldest days, with damp cold that feels more bitter than the thermometer suggests. Most days hover around 5°C, with nights frequently dropping near freezing. The notorious humidity makes even mild cold feel bone-chilling without proper layers.</p>
+            
+            <p>Locals bundle up in long down coats, and you'll rarely see exposed ankles despite the relatively mild temperatures. Street food vendors selling roasted sweet potatoes and chestnuts appear on corners, providing both snacks and hand warmers.</p>
+            
+            <div class="local-tip">
+                Indoor heating is inconsistent in Shanghai - many restaurants and shops use minimal heating. Layer with thermal underwear and bring a compact umbrella for the frequent drizzle. The Shanghai Natural History Museum makes an excellent rainy day retreat.
+            </div>
+        </div>
+
+        <div id="feb" class="month-content">
+            <h3 class="region-title">February in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 2°C to 10°C<br>Feels like: 0°C to 7°C</td>
+                    <td>🌧️ 59mm over 9 days<br>🌫️ Morning fog common</td>
+                    <td>☀️ 5 hours daily<br>🌇 5:30pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>February sees winter's grip loosening slightly, though the damp cold persists. Chinese New Year often falls in February, transforming the city as millions leave for their hometowns. If you're visiting during the festival, expect many shops and restaurants to close for up to a week.</p>
+            
+            <p>The city feels remarkably empty during the New Year holiday, with tourist sites blissfully uncrowded. Early plum blossoms may appear in Shanghai's parks by month's end, providing the first hint of spring.</p>
+            
+            <div class="local-tip">
+                If you're staying through Chinese New Year, book dinner reservations well in advance as open restaurants fill quickly. Morning fog often burns off by noon, making afternoons the best time for sightseeing. Yu Garden hosts a stunning lantern festival that's worth braving the cold.
+            </div>
+        </div>
+
+        <div id="mar" class="month-content">
+            <h3 class="region-title">March in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 6°C to 14°C<br>Feels like: 4°C to 12°C</td>
+                    <td>🌧️ 84mm over 12 days<br>🌦️ Unpredictable patterns</td>
+                    <td>☀️ 5-6 hours daily<br>🌇 5:45pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>March welcomes Shanghai's awakening from winter, with magnolias and cherry blossoms beginning their show. Temperature swings become common - some days feel springlike at 17°C, while others revert to winter chill. Layers remain essential as weather changes rapidly throughout the day.</p>
+            
+            <p>The frequent rain brings out a sea of umbrellas, and parks fill with photographers capturing the first blooms. This shoulder season offers good value for accommodations before spring tourism peaks.</p>
+            
+            <div class="local-tip">
+                Shanghai's spring rain comes without warning - carry a light raincoat or compact umbrella at all times. Cherry blossoms peak at Gucun Forest Park around late March. Use the increasingly comfortable evenings to explore the neon-lit streets of Xintiandi without the summer crowds.
+            </div>
+        </div>
+
+        <div id="apr" class="month-content">
+            <h3 class="region-title">April in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 11°C to 19°C<br>Feels like: 9°C to 18°C</td>
+                    <td>🌧️ 102mm over 12 days<br>🌧️ Rainy season begins</td>
+                    <td>☀️ 6 hours daily<br>🌇 6:15pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>April brings true spring to Shanghai, with comfortable days and the countryside exploding into green. This is peak bloom season, with cherry blossoms, magnolias, and azaleas creating stunning displays throughout the city's parks. The increasing warmth wakes the city from its winter slumber.</p>
+            
+            <p>The legendary "plum rains" begin, bringing frequent downpours that can appear without warning, often during otherwise sunny days. Locals carry umbrellas regardless of the forecast, a habit visitors quickly adopt.</p>
+            
+            <div class="local-tip">
+                April is prime time for visiting water towns like Zhujiajiao before summer tourists arrive. The Shanghai Botanical Garden bursts with color all month. If caught in rain, duck into one of the city's thousands of milk tea shops that locals favor for waiting out downpours.
+            </div>
+        </div>
+
+        <div id="may" class="month-content">
+            <h3 class="region-title">May in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 16°C to 24°C<br>Feels like: 16°C to 25°C</td>
+                    <td>🌧️ 122mm over 13 days<br>🌧️ Heavy afternoon showers</td>
+                    <td>☀️ 7 hours daily<br>🌇 6:30pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>May marks Shanghai's transition to summer, with genuinely warm days that occasionally reach 28°C. The humidity rises noticeably, giving a preview of the summer to come. Street-side dining areas fill up as restaurants expand outdoors, and locals flock to parks for evening strolls.</p>
+            
+            <p>The plum rain intensifies, bringing regular heavy downpours that can flood minor streets temporarily. Early mornings offer the most reliable dry periods for outdoor activities. Labor Day (May 1-5) brings massive domestic tourism - avoid major attractions during this holiday.</p>
+            
+            <div class="local-tip">
+                May is your last chance for comfortable outdoor exploration before summer humidity sets in. The rain pattern typically brings clear mornings and afternoon storms - schedule accordingly. Locals head to Dishui Lake for weekend escapes as temperatures rise - follow their lead to escape the urban heat.
+            </div>
+        </div>
+
+        <div id="jun" class="month-content">
+            <h3 class="region-title">June in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 21°C to 28°C<br>Feels like: 23°C to 31°C</td>
+                    <td>🌧️ 169mm over 14 days<br>🌧️ Peak "plum rain" season</td>
+                    <td>☀️ 6-7 hours daily<br>🌇 6:50pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>June brings Shanghai's infamous "plum rains" (梅雨) at full force. This ancient calendar season delivers 2-3 weeks of nearly constant rain, high humidity, and occasional spectacular thunderstorms. Mold grows overnight on leather goods, and laundry refuses to dry.</p>
+            
+            <p>When the sun does appear, the heat immediately turns intense, with temperatures occasionally pushing above 33°C. Air conditioners run continuously in homes and businesses. The Dragon Boat Festival typically falls in June, with traditional rice dumplings (zongzi) appearing in every market.</p>
+            
+            <div class="local-tip">
+                Waterproof everything during plum rain season - shoes, bags, electronics. Dehumidifier packets are worth their weight in gold for travelers. The Shanghai Museum and other indoor attractions become packed refuges on rainy days, so arrive early. Locals swear by vinegar-soaked socks to prevent fungal infections - an old remedy worth considering.
+            </div>
+        </div>
+
+        <div id="jul" class="month-content">
+            <h3 class="region-title">July in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 25°C to 33°C<br>Feels like: 29°C to 38°C</td>
+                    <td>🌧️ 145mm over 12 days<br>⛈️ Brief powerful storms</td>
+                    <td>☀️ 8 hours daily<br>🌇 6:45pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>July transforms Shanghai into a steam bath as the plum rains end and summer heat takes hold with a vengeance. Daytime temperatures consistently hover above 33°C with extreme humidity that makes it feel like walking through soup. The heat index routinely approaches 40°C, and nights provide little relief.</p>
+            
+            <p>Locals adopt a nocturnal lifestyle, with parks and streets bustling until late as people emerge after sunset. Air-conditioned shopping malls become community centers, packed with people escaping the heat with minimal purchase intentions.</p>
+            
+            <div class="local-tip">
+                Shanghai locals survive July by moving activity to early morning (5-7am) or evening (after 7pm). Mid-day is for air-conditioned indoor activities only. Carry a hand fan, cooling towel, and multiple shirt changes. The Bund promenade comes alive after 9pm with a cooling river breeze that offers the day's most pleasant outdoor experience.
+            </div>
+        </div>
+
+        <div id="aug" class="month-content">
+            <h3 class="region-title">August in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 25°C to 32°C<br>Feels like: 29°C to 37°C</td>
+                    <td>🌧️ 156mm over 11 days<br>🌪️ Typhoon season peaks</td>
+                    <td>☀️ 7-8 hours daily<br>🌇 6:20pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>August maintains July's oppressive heat while adding the peak of typhoon season. While direct hits are rare, Shanghai often experiences the outer bands of typhoons making landfall elsewhere, bringing massive downpours and occasionally strong winds that provide brief relief from the heat.</p>
+            
+            <p>This is Shanghai's traditional "furnace month," when even locals struggle with the relentless combination of heat and humidity. Many Shanghainese escape to mountain retreats in neighboring provinces, leaving the city slightly less crowded despite the summer tourism season.</p>
+            
+            <div class="local-tip">
+                Typhoon warnings might disrupt travel plans with little notice - build flexibility into August itineraries. The heat makes water activities essential - Century Park's boating lake and the indoor wave pool at Dino Beach Water Park become survival mechanisms, not just recreation. Keep phones in waterproof cases as sudden downpours can soak electronics before you can react.
+            </div>
+        </div>
+
+        <div id="sep" class="month-content">
+            <h3 class="region-title">September in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 20°C to 27°C<br>Feels like: 21°C to 29°C</td>
+                    <td>🌧️ 128mm over 10 days<br>🌪️ Late typhoon possibility</td>
+                    <td>☀️ 6-7 hours daily<br>🌇 5:50pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>September finally breaks summer's grip as the month progresses, with a noticeable drop in both heat and humidity after mid-month. Early September can still feel like August, but by month's end, the first genuinely pleasant days appear. Typhoon season continues, though with decreasing frequency.</p>
+            
+            <p>The Mid-Autumn Festival typically falls in September, bringing mooncakes to every bakery and home. This marks the traditional end of summer in Chinese culture, with families gathering to appreciate the harvest moon.</p>
+            
+            <div class="local-tip">
+                September offers Shanghai's best street food as the cooler evenings bring out vendors who disappeared during summer heat. The water temperature at beaches like Jinshan remains comfortable for swimming while the crowds thin out. Mid-Autumn Festival night turns Pudong's skyscrapers into light shows worth seeing from the Bund.
+            </div>
+        </div>
+
+        <div id="oct" class="month-content">
+            <h3 class="region-title">October in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 15°C to 22°C<br>Feels like: 14°C to 21°C</td>
+                    <td>🌧️ 61mm over 7 days<br>☀️ Increased clear days</td>
+                    <td>☀️ 6 hours daily<br>🌇 5:15pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>October delivers Shanghai's perfect weather - warm, sunny days with refreshingly cool nights and dramatically reduced humidity. This golden month brings the city's best outdoor conditions, with locals flocking to parks and waterfronts. The first half of October sees National Day holidays (Oct 1-7), with massive crowds at all tourist sites.</p>
+            
+            <p>By mid-October, the summer haze clears to reveal sharper views and brilliant blue skies. Street-side dining returns as restaurants reopen outdoor seating areas abandoned during summer's oppressive heat.</p>
+            
+            <div class="local-tip">
+                Avoid Shanghai during the first week of October (National Day) unless you enjoy extreme crowds. Mid-October to early November offers the year's best weather window - prioritize outdoor activities and day trips during this perfect season. Shanghai Disney sees its best weather but longest lines in October.
+            </div>
+        </div>
+
+        <div id="nov" class="month-content">
+            <h3 class="region-title">November in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 9°C to 16°C<br>Feels like: 7°C to 14°C</td>
+                    <td>🌧️ 52mm over 7 days<br>🌫️ Morning fog returns</td>
+                    <td>☀️ 5 hours daily<br>🌇 4:50pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>November brings autumn's full expression to Shanghai, with pleasant days gradually yielding to winter's approach. Early November can still see temperatures approaching 20°C, while late month drops into consistent single digits. The turning plane trees line streets with golden canopies that local photographers eagerly document.</p>
+            
+            <p>The humidity returns in a different form - a damp chill that cuts deeper than the thermometer suggests. Locals break out their down jackets earlier than visitors might expect for the temperatures. The Shanghai Marathon typically runs in November, taking advantage of the ideal running weather.</p>
+            
+            <div class="local-tip">
+                November brings Shanghai's fall foliage peak, with Gucun Park and Shanghai Botanical Garden offering the best displays. The chill makes hot pot restaurants suddenly popular - join locals at Haidilao or the more authentic Chongqing-style establishments on Yunnan Road. Centrally-heated hotels become worth the premium as nights cool dramatically.
+            </div>
+        </div>
+
+        <div id="dec" class="month-content">
+            <h3 class="region-title">December in Shanghai</h3>
+            <table class="weather-table">
+                <tr>
+                    <th>Temperature</th>
+                    <th>Precipitation</th>
+                    <th>Sunlight</th>
+                </tr>
+                <tr>
+                    <td>🌡️ 3°C to 11°C<br>Feels like: 1°C to 8°C</td>
+                    <td>🌧️ 43mm over 7 days<br>❄️ Occasional light snow</td>
+                    <td>☀️ 4-5 hours daily<br>🌇 4:45pm sunsets</td>
+                </tr>
+            </table>
+            
+            <p>December envelops Shanghai in winter's embrace, bringing consistently cold days and the return of the notorious damp chill. Despite temperatures rarely dropping below freezing, the humidity makes the cold penetrate layers of clothing. Western Christmas decorations appear throughout the city despite the holiday not being officially celebrated.</p>
+            
+            <p>The winter solstice (December 21-22) marks an important traditional Chinese holiday, with families gathering to eat tangyuan (glutinous rice balls) that symbolize reunion. Nanjing Road and other shopping streets become a riot of lights as the New Year approaches.</p>
+            
+            <div class="local-tip">
+                Shanghai's lack of central heating makes indoor spaces surprisingly cold - dressing in layers matters more than thick outerwear. The best winter warming foods appear in December: roasted sweet potatoes from street vendors, steaming bowls of douhua (tofu pudding), and yangmei tang (hot sweet ginger soup). The Bund promenade empties of tourists but offers dramatic winter views of Pudong for those willing to brave the wind.
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Immediately execute the function
+        (function() {
+            const tabs = document.querySelectorAll('.month-tab');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    
+                    // Remove active class from all tabs
+                    tabs.forEach(t => t.classList.remove('active'));
+                    
+                    // Add active class to clicked tab
+                    this.classList.add('active');
+                    
+                    // Hide all content
+                    document.querySelectorAll('.month-content').forEach(content => {
+                        content.style.display = 'none';
+                    });
+                    
+                    // Show target content
+                    const targetId = this.getAttribute('href').substring(1); // Remove the # from href
+                    const targetContent = document.getElementById(targetId);
+                    if (targetContent) {
+                        targetContent.style.display = 'block';
+                    }
+                });
+            });
+        })(); // Self-executing function
+    </script>
+</body>
+</html>
