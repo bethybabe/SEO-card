@@ -1,0 +1,43 @@
+<style>
+.box26 {
+    position: relative;
+    margin: 2em 0;
+    padding: 0.5em 1em;
+    border: solid 3px #3264ff;
+    border-radius: 8px;
+}
+.box26 .box-title {
+    position: absolute;
+    display: inline-block;
+    top: -13px;
+    left: 10px;
+    padding: 0 9px;
+    line-height: 1;
+    font-size: 19px;
+    background: #FFF;
+    color: #3264ff;
+    font-weight: bold;
+}
+.box26 p {
+    margin: 0; 
+    padding: 0;
+}
+    @media (max-width: 600px) {
+      .block {
+        width: calc(43% - 0px); /* 2列にするための幅調整 */
+      }
+    }
+  </style>
+
+  
+<div class="box26">
+  <span class="box-title">POINT 1</span>
+  <p>
+    The National Immigration Administration announced on Dec. 17 a signification relaxtion of visa-free transit policy.The stay time of foreigners will be extended from 72 hours and 144 hours to 240 hours or 10 days. </p>
+</div>
+
+<div class="box26">
+  <span class="box-title">POINT 2</span>
+  <p>Additionally, 21 new ports will be added for entry and exit and the areas where transit visitors can stay have been expanded! </p>
+</div>
+
