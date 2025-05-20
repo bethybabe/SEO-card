@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Xiamen Gaoqi Airport Guide</title>
+    <style>
+        :root {
+            --primary: #2a4365;
+            --secondary: #3182ce;
+            --accent: #e53e3e;
+            --light: #f7fafc;
+            --gray: #e2e8f0;
+            --dark: #1a202c;
+            --border-radius: 10px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+        }
+        
+        body {
+            background-color: var(--light);
+            color: var(--dark);
+            line-height: 1.6;
+            padding: 2rem;
+        }
+        
+        .container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            max-width: 1200px;
+            margin: 0 auto;
+            align-items: stretch; /* Ensure equal height */
+        }
+        
+        /* Original Left Card Style */
+        .airport-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* Ensure equal height */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .airport-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .airport-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .airport-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--secondary);
+        }
+        
+        .airport-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .airport-subtitle {
+            color: var(--dark);
+            opacity: 0.8;
+            font-size: 1rem;
+            margin-top: 0.25rem;
+        }
+        
+        .feature-list {
+            list-style: none;
+            margin-top: 1.5rem;
+            flex-grow: 1; /* Ensure equal height */
+        }
+        
+        .feature-list li {
+            padding: 0.75rem 0;
+            border-bottom: 1px solid var(--gray);
+            display: flex;
+            align-items: center;
+        }
+        
+        .feature-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .feature-icon {
+            color: var(--accent);
+            margin-right: 1rem;
+            font-size: 1.5rem;
+            min-width: 30px;
+            text-align: center;
+        }
+        
+        .feature-text {
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .feature-label {
+            color: var(--primary);
+        }
+        
+        /* Right Card - Airlines (Styled to match) */
+        .airlines-card {
+            background: white;
+            border-radius: var(--border-radius);
+            padding: 2rem;
+            box-shadow: var(--box-shadow);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%; /* Ensure equal height */
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .airlines-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .airlines-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 1rem;
+        }
+        
+        .airlines-icon {
+            font-size: 2rem;
+            margin-right: 1rem;
+            color: var(--secondary);
+        }
+        
+        .airlines-title {
+            color: var(--primary);
+            font-size: 1.5rem;
+            margin: 0;
+        }
+        
+        .airlines-container {
+            max-height: 400px;
+            overflow-y: auto;
+            padding-right: 10px;
+            flex-grow: 1; /* Ensure equal height */
+            margin-top: 1rem;
+        }
+        
+        .airline-group {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px solid var(--gray);
+        }
+        
+        .airline-group:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+        }
+        
+        .airline-name {
+            color: var(--primary);
+            margin-bottom: 8px;
+            font-size: 1rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .airline-name::before {
+            content: "✈";
+            margin-right: 8px;
+            color: var(--accent);
+        }
+        
+        .destinations {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+        }
+        
+        .destination-tag {
+            background: rgba(234, 242, 253, 0.8);
+            color: var(--primary);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            border: 1px solid rgba(26, 115, 232, 0.1);
+        }
+        
+        @media (max-width: 768px) {
+            body {
+                padding: 1rem;
+            }
+            
+            .container {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <!-- Original Left Card -->
+        <div class="airport-card">
+            <div class="airport-header">
+                <span class="airport-icon">✈️</span>
+                <div>
+                    <h3 class="airport-title">Gaoqi Airport (XMN) Info</h3>
+                    <p class="airport-subtitle">Xiamen's main international gateway</p>
+                </div>
+            </div>
+            
+            <ul class="feature-list">
+                <li>
+                    <span class="feature-icon">🏢</span>
+                    <div class="feature-text">
+                        <span class="feature-label">Terminals</span>
+                        <span>T3 (international), T4 (domestic)</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">✈️</span>
+                    <div class="feature-text">
+                        <span class="feature-label">Top Airlines</span>
+                        <span>XiamenAir (their hub!), China Eastern, Air China</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">📊</span>
+                    <div class="feature-text">
+                        <span class="feature-label">Traffic (2024)</span>
+                        <span>27.9M passengers (busy, but not insane)</span>
+                    </div>
+                </li>
+                <li>
+                    <span class="feature-icon">📍</span>
+                    <div class="feature-text">
+                        <span class="feature-label">Location</span>
+                        <span>12km from downtown (~20 min drive)</span>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- Airlines Card (Styled to match) -->
+        <div class="airlines-card">
+            <div class="airlines-header">
+                <span class="airlines-icon">✈️</span>
+                <div>
+                    <h3 class="airlines-title">Airlines & Destinations</h3>
+                </div>
+            </div>
+            
+            <div class="airlines-container">
+                <div class="airline-group">
+                    <div class="airline-name">XiamenAir (Flagship)</div>
+                    <div class="destinations">
+                        <span class="destination-tag">Amsterdam</span>
+                        <span class="destination-tag">Bangkok</span>
+                        <span class="destination-tag">Beijing</span>
+                        <span class="destination-tag">Chengdu</span>
+                        <span class="destination-tag">Chongqing</span>
+                        <span class="destination-tag">Doha</span>
+                        <span class="destination-tag">Guangzhou</span>
+                        <span class="destination-tag">Hanoi</span>
+                        <span class="destination-tag">Hong Kong</span>
+                        <span class="destination-tag">Los Angeles</span>
+                        <span class="destination-tag">Melbourne</span>
+                        <span class="destination-tag">Paris</span>
+                        <span class="destination-tag">Seoul</span>
+                        <span class="destination-tag">Singapore</span>
+                        <span class="destination-tag">Sydney</span>
+                        <span class="destination-tag">Tokyo</span>
+                        <span class="destination-tag">Vancouver</span>
+                        <span class="destination-tag">+40 more</span>
+                    </div>
+                </div>
+                
+                <div class="airline-group">
+                    <div class="airline-name">China Eastern</div>
+                    <div class="destinations">
+                        <span class="destination-tag">Beijing</span>
+                        <span class="destination-tag">Changchun</span>
+                        <span class="destination-tag">Chengdu</span>
+                        <span class="destination-tag">Hefei</span>
+                        <span class="destination-tag">Kunming</span>
+                        <span class="destination-tag">Nanjing</span>
+                        <span class="destination-tag">Shanghai</span>
+                        <span class="destination-tag">Taiyuan</span>
+                        <span class="destination-tag">Wuhan</span>
+                        <span class="destination-tag">Xi'an</span>
+                    </div>
+                </div>
+                
+                <div class="airline-group">
+                    <div class="airline-name">Air China</div>
+                    <div class="destinations">
+                        <span class="destination-tag">Beijing</span>
+                        <span class="destination-tag">Chengdu</span>
+                        <span class="destination-tag">Chongqing</span>
+                        <span class="destination-tag">Guiyang</span>
+                        <span class="destination-tag">Tianjin</span>
+                        <span class="destination-tag">Wuhan</span>
+                        <span class="destination-tag">Zhengzhou</span>
+                    </div>
+                </div>
+                
+                <div class="airline-group">
+                    <div class="airline-name">Shandong Airlines</div>
+                    <div class="destinations">
+                        <span class="destination-tag">Beijing</span>
+                        <span class="destination-tag">Changchun</span>
+                        <span class="destination-tag">Changsha</span>
+                        <span class="destination-tag">Chengdu</span>
+                        <span class="destination-tag">Chongqing</span>
+                        <span class="destination-tag">Dalian</span>
+                        <span class="destination-tag">Guangzhou</span>
+                        <span class="destination-tag">Guiyang</span>
+                        <span class="destination-tag">Hangzhou</span>
+                        <span class="destination-tag">Jakarta</span>
+                        <span class="destination-tag">Jinan</span>
+                        <span class="destination-tag">Kunming</span>
+                    </div>
+                </div>
+                
+                <div class="airline-group">
+                    <div class="airline-name">International Carriers</div>
+                    <div class="destinations">
+                        <span class="destination-tag">AirAsia (Kuala Lumpur)</span>
+                        <span class="destination-tag">Cathay Pacific (Hong Kong)</span>
+                        <span class="destination-tag">Korean Air (Seoul)</span>
+                        <span class="destination-tag">Malaysia Airlines (Kuala Lumpur)</span>
+                        <span class="destination-tag">Philippine Airlines (Manila)</span>
+                        <span class="destination-tag">Singapore Airlines (Singapore)</span>
+                        <span class="destination-tag">Thai Airways (Bangkok)</span>
+                        <span class="destination-tag">Vietnam Airlines (Ho Chi Minh)</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
