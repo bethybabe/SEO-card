@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Costs in China</title>
+    <style>
+        /* Base styles */
+        :root {
+            --primary: #ff7043;
+            --primary-light: #fff3e0;
+            --primary-dark: #e64a19;
+            --accent: #ffa000;
+            --dark: #333333;
+            --light: #f8f9fa;
+            --gray: #e9ecef;
+            --text: #37474f;
+            --text-light: #78909c;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --card-shadow: rgba(0, 0, 0, 0.08);
+            --radius: 10px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Main content card */
+        .food-card {
+            background-color: white;
+            border-radius: var(--radius);
+            box-shadow: 0 6px 18px var(--shadow);
+            overflow: hidden;
+            margin-bottom: 30px;
+            padding: 35px;
+        }
+
+        .title {
+            color: var(--primary-dark);
+            font-size: 1.8rem;
+            margin-bottom: 25px;
+            font-weight: 700;
+            position: relative;
+            display: inline-block;
+        }
+
+        .title::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background-color: var(--primary);
+            border-radius: 2px;
+        }
+
+        .text {
+            margin-bottom: 20px;
+            font-size: 1.05rem;
+            line-height: 1.7;
+            color: var(--text);
+        }
+
+        /* Modern price grid */
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 20px;
+            margin: 30px 0;
+        }
+
+        .price-item {
+            background: linear-gradient(to bottom right, white, #fcfcfc);
+            border-radius: var(--radius);
+            padding: 20px;
+            box-shadow: 0 8px 16px var(--card-shadow);
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .price-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 12px 20px var(--card-shadow);
+        }
+
+        .price-item::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 4px;
+            height: 100%;
+            background-color: var(--primary);
+            opacity: 0.8;
+        }
+
+        .price-item.premium::before {
+            background-color: #d4af37;
+        }
+
+        .price-item.midrange::before {
+            background-color: #ff9800;
+        }
+
+        .price-item.casual::before {
+            background-color: #66bb6a;
+        }
+
+        .price-item.street::before {
+            background-color: #42a5f5;
+        }
+
+        .price-label {
+            font-weight: 700;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+        }
+
+        .price-value {
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--primary-dark);
+            margin-bottom: 15px;
+        }
+
+        .price-desc {
+            color: var(--text-light);
+            font-size: 0.95rem;
+            line-height: 1.6;
+        }
+
+        /* Food examples section */
+        .examples-section {
+            margin: 35px 0;
+            background-color: var(--primary-light);
+            border-radius: var(--radius);
+            padding: 25px;
+        }
+
+        .examples-title {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: var(--primary-dark);
+        }
+
+        .examples-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+            gap: 18px;
+        }
+
+        .example-item {
+            background-color: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 8px var(--card-shadow);
+        }
+
+        .example-img {
+            height: 120px;
+            background-size: cover;
+            background-position: center;
+        }
+
+        .dumplings-img {
+            background-image: url('https://images.unsplash.com/photo-1563245372-f21724e3856d?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');
+        }
+
+        .hotpot-img {
+            background-image: url('https://images.unsplash.com/photo-1569718212165-3a8278d5f624?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');
+        }
+
+        .dimsum-img {
+            background-image: url('https://images.unsplash.com/photo-1551326844-4df70f78d0e9?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');
+        }
+
+        .peking-img {
+            background-image: url('https://images.unsplash.com/photo-1518983546435-91f8b87fe561?ixlib=rb-4.0.3&auto=format&fit=crop&w=500&q=60');
+        }
+
+        .example-details {
+            padding: 12px;
+        }
+
+        .example-name {
+            font-weight: 600;
+            font-size: 0.95rem;
+            margin-bottom: 3px;
+            color: var(--dark);
+        }
+
+        .example-price {
+            font-size: 0.85rem;
+            color: var(--text-light);
+        }
+
+        /* Tips section */
+        .tips-box {
+            background-color: white;
+            border-radius: var(--radius);
+            padding: 25px;
+            box-shadow: 0 6px 12px var(--shadow);
+            border-left: 5px solid var(--accent);
+            margin: 30px 0;
+        }
+
+        .tips-title {
+            font-size: 1.2rem;
+            color: var(--accent);
+            font-weight: 600;
+            margin-bottom: 15px;
+        }
+
+        .tips-list {
+            list-style-type: none;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+        }
+
+        .tips-list li {
+            position: relative;
+            padding-left: 25px;
+        }
+
+        .tips-list li:before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--accent);
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            font-size: 0.85rem;
+            color: var(--text-light);
+            text-align: center;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .food-card {
+                padding: 25px;
+            }
+            
+            .title {
+                font-size: 1.5rem;
+            }
+            
+            .examples-grid {
+                grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            }
+        }
+
+        @media (max-width: 480px) {
+            .title {
+                font-size: 1.3rem;
+            }
+            
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="food-card">
+            
+            
+            <p class="text">The cost of food in China varies widely depending on where and what you eat. From quick street food bites to elaborate banquet-style dining, China offers options for every budget. Food costs in major cities like Shanghai and Beijing will generally be 20-30% higher than in smaller cities or rural areas.</p>
+            
+            <div class="price-grid">
+                <div class="price-item street">
+                    <div class="price-label">Street Food</div>
+                    <div class="price-value">$1 - $5</div>
+                    <div class="price-desc">Quick bites like baozi, jianbing, and noodle bowls from street vendors and food stalls</div>
+                </div>
+                
+                <div class="price-item casual">
+                    <div class="price-label">Local Restaurants</div>
+                    <div class="price-value">$5 - $15</div>
+                    <div class="price-desc">Casual restaurants serving full meals with multiple dishes for sharing</div>
+                </div>
+                
+               <div class="price-item midrange">
+                    <div class="price-label">Mid-range Dining</div>
+                    <div class="price-value">$15 - $30</div>
+                    <div class="price-desc">Better ambiance, nicer settings, and premium regional specialties</div>
+                </div>
+                
+                <div class="price-item premium">
+                    <div class="price-label">Fine Dining</div>
+                    <div class="price-value">$30+</div>
+                    <div class="price-desc">High-end restaurants with gourmet cuisine and premium ingredients</div>
+                </div>
+            </div>
+            
+            <p class="text">If you're traveling on a budget, you can easily eat well for around $10-15 per day by exploring street food and local eateries. China's food delivery apps like Meituan are also incredibly convenient and often offer discounts for first-time users.</p>
+            
+            <div class="examples-section">
+                <h3 class="examples-title">Popular Chinese Dishes & Their Costs</h3>
+                
+                <div class="examples-grid">
+                    <div class="example-item">
+                        <div class="example-img dumplings-img"></div>
+                        <div class="example-details">
+                            <div class="example-name">Dumplings (Jiaozi)</div>
+                            <div class="example-price">$2-5 for 10-15 pieces</div>
+                        </div>
+                    </div>
+                    
+                    <div class="example-item">
+                        <div class="example-img hotpot-img"></div>
+                        <div class="example-details">
+                            <div class="example-name">Hot Pot</div>
+                            <div class="example-price">$8-25 per person</div>
+                        </div>
+                    </div>
+                    
+                    <div class="example-item">
+                        <div class="example-img dimsum-img"></div>
+                        <div class="example-details">
+                            <div class="example-name">Dim Sum</div>
+                            <div class="example-price">$3-6 per basket</div>
+                        </div>
+                    </div>
+                    
+                     
+                </div>
+            </div>
+            
+            <p class="text">Unlike in Western countries, tipping is not expected in China and may even be refused in most places. Some high-end restaurants might include a 10-15% service charge, but this will be clearly indicated on your bill.</p>
+            
+            <div class="tips-box">
+                <h3 class="tips-title">Insider Tips for Eating in China</h3>
+                <ul class="tips-list">
+                    <li>Breakfast is incredibly affordable - try local breakfast shops for filling meals under $3</li>
+                    <li>Many restaurants have QR codes at tables for ordering via your phone</li>
+                    <li>Tea is often served free in restaurants, but premium teas may have a charge</li>
+                    <li>Look for restaurants with crowds of locals - they often have the best and most authentic food</li>
+                    <li>Shopping malls typically have great food courts with affordable local cuisine</li>
+                    <li>If traveling in a group, sharing multiple dishes Chinese-style is more economical</li>
+                </ul>
+            </div>
+            
+            <p class="text">Don't be afraid to explore beyond tourist areas where food prices can be inflated. Some of the best and most authentic Chinese cuisine can be found in neighborhood restaurants where locals eat, often at a fraction of the price you'd pay in tourist zones.</p>
+        </div>
+
+        <footer>
+            <p>Prices are estimated as of 2025 and may vary by location, season, and specific establishment.</p>
+        </footer>
+    </div>
+</body>
+</html>
