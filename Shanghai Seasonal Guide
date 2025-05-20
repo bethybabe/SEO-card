@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chongqing Seasonal Guide</title>
+    <style>
+        :root {
+            --spring: #4CAF50;
+            --summer: #FF9800;
+            --autumn: #F44336;
+            --winter: #2196F3;
+            --text: #333;
+            --bg: #f9f9f9;
+            --card-bg: #fff;
+        }
+        
+        body {
+    width: 100%;
+    max-width: none;
+    padding: 20px;
+    margin: 0;
+  }
+  .container {
+    width: 100%;
+  }
+        
+        .intro {
+            background-color: var(--card-bg);
+            padding: 25px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+            border-left: 5px solid var(--autumn);
+        }
+        
+        .intro p {
+            margin-bottom: 15px;
+        }
+        
+        .season {
+            background-color: var(--card-bg);
+            border-radius: 10px;
+            overflow: hidden;
+            margin-bottom: 30px;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+        }
+        
+        .season-header {
+            padding: 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+        
+        .spring .season-header { background-color: var(--spring); }
+        .summer .season-header { background-color: var(--summer); }
+        .autumn .season-header { background-color: var(--autumn); }
+        .winter .season-header { background-color: var(--winter); }
+        
+        .season-header h3 {
+            margin: 0;
+            font-size: 1.5rem;
+            display: flex;
+            align-items: center;
+        }
+        
+        .season-header h3::before {
+            font-size: 1.8rem;
+            margin-right: 12px;
+        }
+        
+        .spring h3::before { content: "🌿"; }
+        .summer h3::before { content: "☀️"; }
+        .autumn h3::before { content: "🍂"; }
+        .winter h3::before { content: "❄️"; }
+        
+        .season-content {
+            padding: 20px;
+        }
+        
+        h4 {
+            margin: 20px 0 10px 0;
+            font-size: 1.2rem;
+            color: inherit;
+            display: flex;
+            align-items: center;
+        }
+        
+        .weather h4::before { content: "🌡️"; margin-right: 8px; }
+        .wear h4::before { content: "👗"; margin-right: 8px; }
+        .activities h4::before { content: "🎯"; margin-right: 8px; }
+        .events h4::before { content: "🎉"; margin-right: 8px; }
+        .note h4::before { content: "⚠️"; margin-right: 8px; }
+        
+        .summer .wear h4::before { content: "👕"; }
+        .autumn .wear h4::before { content: "🧥"; }
+        .winter .wear h4::before { content: "🧣"; }
+        
+        ul {
+            padding-left: 20px;
+            margin: 10px 0;
+        }
+        
+        li {
+            margin-bottom: 8px;
+        }
+        
+        .note {
+            background-color: rgba(255, 152, 0, 0.1);
+            padding: 15px;
+            border-radius: 8px;
+            margin-top: 15px;
+        }
+        
+        @media (min-width: 768px) {
+            .seasons-container {
+                display: grid;
+                grid-template-columns: repeat(2, 1fr);
+                gap: 25px;
+            }
+            
+            .season {
+                margin-bottom: 0;
+            }
+        }
+    </style>
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shanghai Seasonal Guide</title>
+    <style>
+        /* Same CSS as previous example, just update color scheme */
+        :root {
+            --spring: #9CCC65;  /* Shanghai peony pink */
+            --summer: #FF7043;  /* Summer sunset orange */
+            --autumn: #D84315;  /* Maple leaf red */
+            --winter: #4FC3F7;  /* Winter river blue */
+            --text: #333;
+            --bg: #f9f9f9;
+            --card-bg: #fff;
+        }
+        /* Keep rest of CSS identical to previous seasonal guide */
+    </style>
+</head>
+<body>
+    <div class="intro">
+        <p>Shanghai shifts personalities with the seasons - from humid summer nights buzzing with scooter deliveries to misty winter mornings along the Bund. </p>
+    </div>
+
+    <div class="seasons-container">
+        <!-- Spring -->
+        <div class="season spring">
+            <div class="season-header">
+                <h3>Spring (March–May)</h3>
+            </div>
+            <div class="season-content">
+                <div class="weather">
+                    <h4>Weather Whiplash</h4>
+                    <p>15-25°C (59-77°F) but dress for 4 seasons in one day. April's "plum rain" drizzle can last weeks - perfect for moody French Concession photos.</p>
+                </div>
+                
+                <div class="wear">
+                    <h4>What to Wear</h4>
+                    <ul>
+                        <li>Foldable trench coat (looks chic, fights drizzle)</li>
+                        <li>Waterproof Chelsea boots for puddle-jumping</li>
+                        <li>Compact umbrella that matches your 'fit</li>
+                    </ul>
+                </div>
+                
+                <div class="activities">
+                    <h4>Spring Fun</h4>
+                    <ul>
+                        <li>Picnic at Century Park under cherry blossoms (go weekday mornings to avoid selfie crowds)</li>
+                        <li>Sip jasmine tea in Yu Garden's zigzag bridge pavilions</li>
+                        <li>Ride the Huangpu River ferry at golden hour - skip the pricey tourist boats</li>
+                    </ul>
+                </div>
+                
+                <div class="note">
+                    <h4>Pro Tip</h4>
+                    <p>Late April's Shanghai International Flower Show turns the city into a perfume ad. Allergy sufferers - stock up on masks!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summer -->
+        <div class="season summer">
+            <div class="season-header">
+                <h3>Summer (June–August)</h3>
+            </div>
+            <div class="season-content">
+                <div class="weather">
+                    <h4>Concrete Sauna</h4>
+                    <p>28-38°C (82-100°F) with 90% humidity. July feels like wearing a wet wool coat. Typhoon season brings drama (and flight delays).</p>
+                </div>
+                
+                <div class="wear">
+                    <h4>What to Wear</h4>
+                    <ul>
+                        <li>Linen everything - locals spot polyester sweat stains</li>
+                        <li>USB fan that clips to your shopping bag</li>
+                        <li>SPF 50+ for the Bund waterfront (zero shade)</li>
+                    </ul>
+                </div>
+                
+                <div class="activities">
+                    <h4>Beat the Heat</h4>
+                    <ul>
+                        <li>Midnight noodle crawls in former French Concession alleys</li>
+                        <li>Contemporary art museums (AC blasting + cool installations)</li>
+                        <li>Day trip to Sheshan's bamboo forests - 5°C cooler</li>
+                    </ul>
+                </div>
+                
+                <div class="note">
+                    <h4>Local Hack</h4>
+                    <p>Download Ele.me app - delivery milk tea to your airbnb saves midday meltdowns. Get taro flavor with herbal jelly!</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Autumn -->
+        <div class="season autumn">
+            <div class="season-header">
+                <h3>Autumn (September–November)</h3>
+            </div>
+            <div class="season-content">
+                <div class="weather">
+                    <h4>Golden Hour</h4>
+                    <p>Crisp 18-25°C (64-77°F). October air smells of osmanthus flowers and roasted chestnuts. Perfect sweater weather.</p>
+                    
+                </div>
+                
+                <div class="wear">
+                    <h4>What to Wear</h4>
+                    <ul>
+                        <li>Cashmere wrap doubles as blanket for river cruises</li>
+                        <li>Ankle boots that handle 20k steps/day</li>
+                        <li>Crossbody bag for night markets</li>
+                    </ul>
+                </div>
+                
+                <div class="activities">
+                    <h4>Autumn Must-Dos</h4>
+                    <ul>
+                        <li>Cycle tree-lined streets hunting for maple leaf shadows</li>
+                        <li>Xuhui riverside cafes - pumpkin spice lattes meet hairy crab season</li>
+                        <li>Sunset at M50 art district rooftops</li>
+                    </ul>
+                    <div class="note">
+                    <h4>Heads Up</h4>
+                    <p>Scorching heat + summer breaks = super packed tourist sites. Typhoons love crashing July/August beach plans. Have backup indoor activities ready in coastal cities!</p>
+                </div>
+                    
+                </div>
+            </div>
+        </div>
+
+        <!-- Winter -->
+        <div class="season winter">
+            <div class="season-header">
+                <h3>Winter (December–February)</h3>
+            </div>
+            <div class="season-content">
+                <div class="weather">
+                    <h4>Damp Chill</h4>
+                    <p>3-10°C (37-50°F) that seeps into bones. January's "feels like" temp often colder than Beijing. Occasional snow flurries cause city-wide excitement.</p>
+                </div>
+                
+                <div class="wear">
+                    <h4>What to Wear</h4>
+                    <ul>
+                        <li>Heattech layers under tailored coats</li>
+                        <li>Waterproof boots (sleek streets get slick)</li>
+                        <li>Touchscreen gloves for food stall scrolling</li>
+                    </ul>
+                </div>
+                
+                <div class="activities">
+                    <h4>Winter Activities</h4>
+                    <ul>
+                        <li>Steamed crab feasts in the Old City (bring your own vinegar)</li>
+                        <li>Christmas markets at Kerry Center - mulled wine meets xiaolongbao</li>
+                        <li>Underground pearl markets - haggle for gifts without frostbite</li>
+                    </ul>
+                </div>
+                
+                <div class="note">
+                    <h4>Insider Note</h4>
+                    <p>Chinese New Year = empty streets but magical decorations. Stock up on snacks - most local eateries close for 3 days.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
