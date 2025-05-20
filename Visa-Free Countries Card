@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+            background: #f5f7fa;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+        }
+
+        .title {
+            font-size: 24px;
+            color: #1a1a1a;
+            margin-bottom: 24px;
+            padding: 0 16px;
+        }
+
+        .region-section {
+            background: white;
+            border-radius: 12px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+            overflow: hidden;
+        }
+
+        .region-header {
+            padding: 16px 20px;
+            background: #f8f9fa;
+            cursor: pointer;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: background-color 0.3s;
+        }
+
+        .region-header:hover {
+            background: #eef2f7;
+        }
+
+        .region-name {
+            font-size: 18px;
+            font-weight: 600;
+            color: #2c5282;
+        }
+
+        .country-count {
+            font-size: 14px;
+            color: #718096;
+            background: #edf2f7;
+            padding: 4px 12px;
+            border-radius: 12px;
+        }
+
+        .country-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+            gap: 16px;
+            padding: 20px;
+        }
+
+        .country-card {
+            background: #f8fafc;
+            border-radius: 8px;
+            padding: 16px;
+            transition: transform 0.2s;
+        }
+
+        .country-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+        }
+
+        .country-name {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 8px;
+        }
+
+        .date-range {
+            font-size: 14px;
+            color: #718096;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .date-range::before {
+            content: "🗓";
+        }
+
+        .region-content {
+            display: none;
+        }
+
+        .region-section.active .region-content {
+            display: block;
+        }
+
+        @media (max-width: 768px) {
+            .country-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .title {
+                font-size: 20px;
+            }
+
+            .region-header {
+                padding: 12px 16px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+       
+        
+        <!-- Asia Region -->
+        <div class="region-section active">
+            <div class="region-header">
+                <span class="region-name">Asia</span>
+                <span class="country-count">4 countries</span>
+            </div>
+            <div class="region-content">
+                <div class="country-grid">
+                    <div class="country-card">
+                        <div class="country-name">Brunei</div>
+                        <div class="date-range">Jul 26, 2023 → Not specified</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Japan</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Malaysia</div>
+                        <div class="date-range">Dec 1, 2023 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">South Korea</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Oceania Region -->
+        <div class="region-section">
+            <div class="region-header">
+                <span class="region-name">Oceania</span>
+                <span class="country-count">2 countries</span>
+            </div>
+            <div class="region-content">
+                <div class="country-grid">
+                    <div class="country-card">
+                        <div class="country-name">Australia</div>
+                        <div class="date-range">Jul 1, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">New Zealand</div>
+                        <div class="date-range">Jul 1, 2024 → Dec 31, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Western Europe Region -->
+        <div class="region-section">
+            <div class="region-header">
+                <span class="region-name">Western Europe</span>
+                <span class="country-count">16 countries</span>
+            </div>
+            <div class="region-content">
+                <div class="country-grid">
+                    <div class="country-card">
+                        <div class="country-name">Andorra</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Belgium</div>
+                        <div class="date-range">Mar 14, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Denmark</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Finland</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">France</div>
+                        <div class="date-range">Dec 1, 2023 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Germany</div>
+                        <div class="date-range">Dec 1, 2023 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Iceland</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Ireland</div>
+                        <div class="date-range">Mar 14, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Liechtenstein</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Luxembourg</div>
+                        <div class="date-range">Mar 14, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Monaco</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Netherlands</div>
+                        <div class="date-range">Dec 1, 2023 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Norway</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Spain</div>
+                        <div class="date-range">Dec 1, 2023 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Switzerland</div>
+                        <div class="date-range">Mar 14, 2024 → Dec 31, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Central Europe Region -->
+        <div class="region-section">
+            <div class="region-header">
+                <span class="region-name">Central Europe</span>
+                <span class="country-count">5 countries</span>
+            </div>
+            <div class="region-content">
+                <div class="country-grid">
+                    <div class="country-card">
+                        <div class="country-name">Austria</div>
+                        <div class="date-range">Mar 14, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Hungary</div>
+                        <div class="date-range">Mar 14, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Poland</div>
+                        <div class="date-range">Jul 1, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Slovakia</div>
+                        <div class="date-range">Nov 8, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Slovenia</div>
+                        <div class="date-range">Oct 15, 2024 → Dec 31, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Southern Europe Region -->
+        <div class="region-section">
+            <div class="region-header">
+                <span class="region-name">Southern Europe</span>
+                <span class="country-count">5 countries</span>
+            </div>
+            <div class="region-content">
+                <div class="country-grid">
+                    <div class="country-card">
+                        <div class="country-name">Cyprus</div>
+                        <div class="date-range">Oct 15, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Greece</div>
+                        <div class="date-range">Oct 15, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Italy</div>
+                        <div class="date-range">Dec 1, 2023 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Malta</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Portugal</div>
+                        <div class="date-range">Oct 15, 2024 → Dec 31, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Eastern Europe Region -->
+        <div class="region-section">
+            <div class="region-header">
+                <span class="region-name">Eastern Europe</span>
+                <span class="country-count">6 countries</span>
+            </div>
+            <div class="region-content">
+                <div class="country-grid">
+                    <div class="country-card">
+                        <div class="country-name">Bulgaria</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Croatia</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Estonia</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Latvia</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">North Macedonia</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                    <div class="country-card">
+                        <div class="country-name">Romania</div>
+                        <div class="date-range">Nov 30, 2024 → Dec 31, 2025</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.region-header').forEach(header => {
+            header.addEventListener('click', () => {
+                const section = header.parentElement;
+                section.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>
