@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China Travel Costs</title>
+    <style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', system-ui;
+            padding: 20px;
+            background: #f8f9fa;
+        }
+
+        h2 {
+            text-align: center;
+            margin: 40px 0 30px;
+            color: #2d3436;
+            font-size: 1.8em;
+        }
+
+        .attraction-cards, .price-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .attraction-card {
+            background: white;
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+            transition: transform 0.2s;
+        }
+
+        .attraction-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .attraction-img {
+            width: 100%;
+            height: 200px;
+            object-fit: cover;
+            border-bottom: 3px solid #0984e3;
+        }
+
+        .attraction-info {
+            padding: 15px;
+        }
+
+        .attraction-name {
+            color: #2d3436;
+            margin-bottom: 10px;
+            font-size: 1.1em;
+        }
+
+        .attraction-price {
+            color: #00b894;
+            font-weight: 600;
+            margin: 10px 0;
+        }
+
+        .book-btn {
+            display: inline-block;
+            background: #0984e3;
+            color: white!important;
+            padding: 8px 15px;
+            border-radius: 5px;
+            text-decoration: none;
+            font-size: 0.9em;
+            margin-top: 10px;
+            transition: background 0.2s;
+        }
+
+        .book-btn:hover {
+            background: #0873c4;
+        }
+
+        /* Hotel cards styles (keep existing) */
+        .price-cards { margin-top: 40px; }
+        .card { /* Keep previous hotel card styles */ }
+    </style>
+</head>
+<body>
+  
+    
+    <div class="attraction-cards">
+        <!-- Great Wall of China -->
+        <div class="attraction-card">
+            <img src="https://youimg1.tripcdn.com/target/0104j120006p3qa0gA978_W_1024_10000_Q70.webp" alt="Great Wall" class="attraction-img">
+            <div class="attraction-info">
+                <h3 class="attraction-name">Great Wall of China</h3>
+                <div class="attraction-price">Ticket: ¥40-80 (Seasonal)</div>
+                <a href="https://www.trip.com/guide/attraction/great-wall-of-china-tickets.html" class="book-btn" target="_blank">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Terracotta Army -->
+        <div class="attraction-card">
+            <img src="https://ak-d.tripcdn.com/images/0EQ0j12000iyzc3c9AB72_C_1200_800_Q70.jpg" alt="Terracotta Army" class="attraction-img">
+            <div class="attraction-info">
+                <h3 class="attraction-name">Terracotta Army</h3>
+                <div class="attraction-price">Ticket: ¥120-150</div>
+                <a href="https://www.trip.com/guide/attraction/qin-shi-huang-tomb-tickets.html" class="book-btn" target="_blank">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Forbidden City -->
+        <div class="attraction-card">
+            <img src="https://ak-d.tripcdn.com/images/0100j1200046x94ebB936_C_670_376_Q70.webp" alt="Forbidden City" class="attraction-img">
+            <div class="attraction-info">
+                <h3 class="attraction-name">Forbidden City</h3>
+                <div class="attraction-price">Ticket: ¥40-60</div>
+                <a href="https://www.trip.com/guide/attraction/forbidden-city-tickets.html" class="book-btn" target="_blank">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Shanghai Tower -->
+        <div class="attraction-card">
+            <img src="https://ak-d.tripcdn.com/images/0100812000f6pvv945ED1_C_1200_800_Q70.jpg" alt="Shanghai Tower" class="attraction-img">
+            <div class="attraction-info">
+                <h3 class="attraction-name">Shanghai Tower</h3>
+                <div class="attraction-price">Ticket: ¥180-220</div>
+                <a href="https://www.trip.com/guide/attraction/shanghai-tower-tickets.html" class="book-btn" target="_blank">Book Now</a>
+            </div>
+        </div>
+
+       
+
+        <!-- Shanghai Wild Animal Park -->
+        <div class="attraction-card">
+            <img src="https://ak-d.tripcdn.com/images/1lo4512000hxsgblzA223_C_670_376_Q70.webp" alt="Wild Animal Park" class="attraction-img">
+            <div class="attraction-info">
+                <h3 class="attraction-name">Shanghai Wild Animal Park</h3>
+                <div class="attraction-price">Ticket: ¥130-165</div>
+                <a href="https://www.trip.com/guide/attraction/shanghai-wild-animal-park.html" class="book-btn" target="_blank">Book Now</a>
+            </div>
+        </div>
+
+        <!-- Yu Garden -->
+        <div class="attraction-card">
+            <img src="https://ak-d.tripcdn.com/images/0101v1200096jdzuzD63E_C_670_376_Q70.webp" alt="Yu Garden" class="attraction-img">
+            <div class="attraction-info">
+                <h3 class="attraction-name">Yu Garden</h3>
+                <div class="attraction-price">Ticket: ¥30-40</div>
+                <a href="https://www.trip.com/guide/attraction/yu-garden-tickets.html" class="book-btn" target="_blank">Book Now</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hotel Price Cards Section (Keep previous code here) -->
+    <div class="price-cards">
+        <!-- Original hotel cards content -->
+    </div>
+
+    <div class="disclaimer">
+        *Prices are approximate and vary by season, availability, and ticket type. All prices in CNY.
+    </div>
+</body>
+</html>
