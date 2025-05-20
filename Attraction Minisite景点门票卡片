@@ -1,0 +1,187 @@
+<style>
+        .tg-module {
+            max-width:1200px;
+            margin:40px auto;
+            display:flex;
+            align-items:flex-start;
+            background: linear-gradient(90deg,#f5f5f5,hsla(0,0%,96%,0));
+            padding: 40px 20px;
+            border-radius:10px;
+            box-sizing: border-box;
+        }
+        .tg-module > div {
+            display: inline;
+        }
+
+        .tg-module .module-title {
+            width:25%
+        }
+
+        .tg-module .module-cards {
+            width:75%
+        }
+
+        .tg-module .list-cards {
+            display: inline-flex;
+            flex-wrap: wrap;
+            justify-content: space-between;
+        }
+
+        .tg-module .list-cards li {
+            display: inline;
+            width:30%;
+            border-radius:10px;
+            border: solid 1px #e0e0e0;
+            margin-bottom:15px !important;
+        }
+
+        .tg-module .list-cards img {
+            width:100%;
+            border-radius:10px 10px 0 0;
+        }
+
+        .tg-module .module-info {
+            padding:15px;
+            min-height:150px;
+            position:relative;
+        }
+
+        .tg-module h2 {
+            font-size:22px;
+        }
+
+        .tg-module h3 {
+            font-size:16px;
+        }
+
+        .tg-module p {
+            font-size:13px;
+        }
+
+        .tg-module .module-info p {
+            font-size:13px;
+        }
+    
+        .tg-module .module-info h3 {
+            font-size:18px;
+            margin-bottom:5px;
+            font-weight:600;
+        }
+
+        .tg-module .module-info button {
+            background: none;
+            border: none;
+            font-size:14px;
+            padding:0;
+            background-image: linear-gradient(270deg, rgb(30, 84, 249) 0%, rgb(50, 100, 255) 100%);
+            padding:5px 10px;
+            border-radius: 0 0 10px 0;
+            position:absolute;
+            bottom: 0;
+            right:0;
+
+        }
+
+        .tg-module .module-info button a {
+            color:#ffffff;
+            font-size:16px;
+            text-decoration:none;
+        }
+
+        .tg-module .module-title label {
+            background-color: rgb(249, 76, 134);
+            color:#ffffff;
+            font-size:13px;
+            padding:3px 10px;
+            margin-bottom:15px;
+            font-weight:600;
+            text-transform: uppercase;
+            display:inline-block;
+        }
+
+
+        .tg-module .module-info label {
+            background-color: rgb(249, 76, 134);
+            color:#ffffff;
+            font-size:12px;
+            padding:3px 10px;
+            margin-bottom:5px;
+            position: absolute;
+            top: -30px;
+            left: 0;
+        }
+
+        @media only screen and (max-width: 960px) {
+
+            .module-title {
+                text-align:center;
+                width:100% !important;
+                display:inline-block !important;
+            }
+
+            .tg-module  {
+                display:block;
+                margin:0;
+                padding:10pz 20pz;
+                max-width:100%;
+                box-sizing:border-box;
+            }
+
+            .tg-module h2 {
+                text-align:center;
+            }
+
+            .tg-module .list-cards {
+                padding:0;
+            } 
+
+            .tg-module .list-cards li{
+                display:block;
+                width:100%;
+                margin-bottom:10px;
+                box-sizing:border-box;
+                padding:0;
+            }
+        }
+
+    </style>
+    <div class="tg-module">
+        <div class="module-title">
+            <h2>Yu Garden Ticket Prices, Tours & Promotions</h2>
+            <label>Best Price on Trip.com!</label>
+        </div>
+        <div class="module-cards">
+            <ul class="list-cards">
+                <li>
+                    <img class="cover" src="https://ak-d.tripcdn.com/images/0103v12000f9ug057967E_C_1200_800_Q70.jpg?proc=source%2ftrip"></img>
+                    <div class="module-info">
+                        <label>Recommended</label>
+                        <h3>Yu Garden Ticket</h3>
+                        <p>Yu Garden Ticket for 1 Adult(Age:  Over 18 and under 60 years old)</p>
+                        <button><a href="https://www.trip.com/travel-guide/attraction/shanghai/yu-garden-75615/">Ticket Price from US$4.09</a></button>
+                    </div>
+                </li>
+                <li>
+                    <img class="cover" src="https://ak-d.tripcdn.com/images/0105k1200096jduqm3531_C_1200_800_Q70.jpg?proc=source%2ftrip"></img>
+                    <div class="module-info">
+                        <h3>Yu Garden Group Tour</h3>
+                        <p>1-hour in-depth explanation by famous experts in Yuyuan Garden (includes tickets and headsets) (Adult)</p>
+                        <button><a href="https://www.trip.com/travel-guide/attraction/shanghai/yu-garden-75615/">Ticket Price from US$29.69</a></button>
+                    </div>
+                </li>
+               
+                <li>
+                    <img class="cover" src="https://ak-d.tripcdn.com/images/0104f1200096jdpqoAE2D_C_1200_800_Q70.jpg?proc=source%2ftrip"></img>
+                    <div class="module-info">
+                        <h3>Yu Garden Private Tour</h3>
+                        <p>Intermediate and Advanced Chinese-English Bilingual Private Tour Guide (Ticket Included)</p>
+                        <button><a href="https://www.trip.com/travel-guide/attraction/shanghai/yu-garden-75615/">Ticket Price from US$54.71</a></button>
+                    </div>
+                
+                </li>
+               
+                
+                </li>
+            </ul>
+        </div>
+   </div>
