@@ -1,0 +1,626 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>China Travel Guide</title>
+    <style>
+        /* Base styles */
+        :root {
+            --blue: #0078D7;
+            --red: #E74C3C;
+            --yellow: #F1C40F;
+            --green: #2ECC71;
+            --purple: #9B59B6;
+            --dark: #333333;
+            --light: #F8F9FA;
+            --gray: #E9ECEF;
+            --text: #495057;
+            --shadow: rgba(0, 0, 0, 0.1);
+            --radius: 8px;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+            background-color: var(--light);
+            color: var(--text);
+            line-height: 1.6;
+            padding: 0;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        /* Tabs */
+        .tabs {
+            background-color: #fff;
+            border-radius: var(--radius);
+            box-shadow: 0 4px 15px var(--shadow);
+            overflow: hidden;
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        /* Hide radio buttons */
+        .tab-control {
+            position: absolute;
+            opacity: 0;
+            z-index: -1;
+        }
+
+        /* Tab Header */
+        .tab-header {
+            display: flex;
+            overflow-x: auto;
+            scrollbar-width: none;
+            -ms-overflow-style: none;
+            background-color: #fff;
+            position: sticky;
+            top: 0;
+            z-index: 2;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        .tab-header::-webkit-scrollbar {
+            display: none;
+        }
+
+        .tab-label {
+            border: none;
+            background: transparent;
+            padding: 15px 20px;
+            cursor: pointer;
+            font-size: 0.95rem;
+            font-weight: 500;
+            color: var(--text);
+            white-space: nowrap;
+            display: flex;
+            align-items: center;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .tab-label:hover {
+            background-color: rgba(0, 0, 0, 0.03);
+        }
+
+        .line-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+        }
+
+        .line-indicator.flights { background-color: var(--blue); }
+        .line-indicator.accommodation { background-color: var(--red); }
+        .line-indicator.transportation { background-color: var(--yellow); }
+        .line-indicator.food { background-color: var(--green); }
+        .line-indicator.activities { background-color: var(--purple); }
+        .line-indicator.total { background-color: var(--dark); }
+
+        /* Active tab styles */
+        #tab1:checked ~ .tab-header .tab1-label,
+        #tab2:checked ~ .tab-header .tab2-label,
+        #tab3:checked ~ .tab-header .tab3-label,
+        #tab4:checked ~ .tab-header .tab4-label,
+        #tab5:checked ~ .tab-header .tab5-label,
+        #tab6:checked ~ .tab-header .tab6-label {
+            color: var(--dark);
+            font-weight: 600;
+        }
+
+        #tab1:checked ~ .tab-header .tab1-label::after,
+        #tab2:checked ~ .tab-header .tab2-label::after,
+        #tab3:checked ~ .tab-header .tab3-label::after,
+        #tab4:checked ~ .tab-header .tab4-label::after,
+        #tab5:checked ~ .tab-header .tab5-label::after,
+        #tab6:checked ~ .tab-header .tab6-label::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 100%;
+            height: 3px;
+            background-color: currentColor;
+        }
+
+        /* Tab Content */
+        .tab-content {
+            position: relative;
+        }
+
+        .tab-pane {
+            display: none;
+            padding: 25px;
+            background-color: #fff;
+            animation: fadeIn 0.3s ease;
+        }
+
+        /* Show selected tab */
+        #tab1:checked ~ .tab-content .tab-pane1,
+        #tab2:checked ~ .tab-content .tab-pane2,
+        #tab3:checked ~ .tab-content .tab-pane3,
+        #tab4:checked ~ .tab-content .tab-pane4,
+        #tab5:checked ~ .tab-content .tab-pane5,
+        #tab6:checked ~ .tab-content .tab-pane6 {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .section-header {
+            margin-bottom: 20px;
+        }
+
+        .section-header h2 {
+            font-size: 1.4rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            color: var(--dark);
+        }
+
+        .section-dot {
+            display: inline-block;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+
+        .section-dot.flights { background-color: var(--blue); }
+        .section-dot.accommodation { background-color: var(--red); }
+        .section-dot.transportation { background-color: var(--yellow); }
+        .section-dot.food { background-color: var(--green); }
+        .section-dot.activities { background-color: var(--purple); }
+        .section-dot.total { background-color: var(--dark); }
+
+        .content-box {
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .content-box p {
+            margin-bottom: 15px;
+        }
+
+        a {
+            color: var(--blue);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+
+        a:hover {
+            color: #005bb6;
+            text-decoration: underline;
+        }
+
+        .bold-link {
+            font-weight: bold;
+        }
+
+        /* Cost summary table */
+        .cost-summary {
+            overflow-x: auto;
+            scrollbar-width: thin;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            margin-bottom: 10px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.95rem;
+            overflow: hidden;
+            background-color: white;
+        }
+
+        thead {
+            background-color: var(--gray);
+        }
+
+        th {
+            text-align: left;
+            padding: 12px 16px;
+            font-weight: 600;
+            color: var(--dark);
+            position: sticky;
+            top: 0;
+            background-color: var(--gray);
+        }
+
+        td {
+            padding: 12px 16px;
+            border-bottom: 1px solid var(--gray);
+        }
+
+        tbody tr:last-child td {
+            border-bottom: none;
+        }
+
+        tbody tr:hover {
+            background-color: rgba(0, 0, 0, 0.02);
+        }
+        
+        .cost-item {
+            font-weight: bold;
+        }
+
+        /* Footer */
+        footer {
+            margin-top: 30px;
+            padding-top: 15px;
+            border-top: 1px solid var(--gray);
+            font-size: 0.85rem;
+            color: #6c757d;
+            text-align: center;
+        }
+
+        .notes {
+            margin-bottom: 5px;
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            .container {
+                padding: 15px;
+            }
+            
+            .tab-label {
+                padding: 12px 15px;
+                font-size: 0.9rem;
+            }
+            
+            .section-header h2 {
+                font-size: 1.2rem;
+            }
+            
+            th, td {
+                padding: 10px 12px;
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .tab-header {
+                justify-content: flex-start;
+            }
+            
+            .section-header h2 {
+                font-size: 1.1rem;
+            }
+            
+            .tab-pane {
+                padding: 15px;
+            }
+        }
+    </style>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <div class="tabs">
+            <!-- Radio controls for tabs -->
+            <input type="radio" name="tabs" id="tab1" class="tab-control" checked>
+            <input type="radio" name="tabs" id="tab2" class="tab-control">
+            <input type="radio" name="tabs" id="tab3" class="tab-control">
+            <input type="radio" name="tabs" id="tab4" class="tab-control">
+            <input type="radio" name="tabs" id="tab5" class="tab-control">
+            <input type="radio" name="tabs" id="tab6" class="tab-control">
+            
+            <div class="tab-header">
+                <label for="tab1" class="tab-label tab1-label">
+                    <span class="line-indicator flights"></span>
+                    Flights
+                </label>
+                <label for="tab2" class="tab-label tab2-label">
+                    <span class="line-indicator accommodation"></span>
+                    Accommodation
+                </label>
+                <label for="tab3" class="tab-label tab3-label">
+                    <span class="line-indicator transportation"></span>
+                    Transportation
+                </label>
+                <label for="tab4" class="tab-label tab4-label">
+                    <span class="line-indicator food"></span>
+                    Food & Drinks
+                </label>
+                <label for="tab5" class="tab-label tab5-label">
+                    <span class="line-indicator activities"></span>
+                    Activities
+                </label>
+                <label for="tab6" class="tab-label tab6-label">
+                    <span class="line-indicator total"></span>
+                    Total Cost
+                </label>
+            </div>
+            
+            <div class="tab-content">
+                <!-- Flights Tab -->
+                <div class="tab-pane tab-pane1">
+                    <div class="section-header">
+                        <h2><span class="section-dot flights"></span>Flights</h2>
+                    </div>
+                    <div class="content-box">
+                        <p>Let's start with the flights. The cost of a round-trip ticket to China can vary depending on your departure city. From major cities around the world, you can expect to pay anywhere between $500 to $1500.</p>
+                        
+                        <p>When planning your visit to China, consider booking your <a href="https://www.trip.com/flights/to-shanghai/airfares-sha/" rel="dofollow" class="bold-link">flight to Shanghai</a> or <a href="https://www.trip.com/flights/to-beijing/airfares-bjs/" rel="dofollow" class="bold-link">flight to Beijing</a>.</p>
+                        
+                        <div class="cost-summary">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Flight Route</th>
+                                        <th>Estimated Cost (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>North America to China</td>
+                                        <td>$800 - $1500</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Europe to China</td>
+                                        <td>$600 - $1200</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Australia to China</td>
+                                        <td>$700 - $1300</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Asia to China</td>
+                                        <td>$500 - $900</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Accommodation Tab -->
+                <div class="tab-pane tab-pane2">
+                    <div class="section-header">
+                        <h2><span class="section-dot accommodation"></span>Accommodation</h2>
+                    </div>
+                    <div class="content-box">
+                        <p>Now, let's talk about accommodation. If you're on a budget, you'll be pleased to know that there are plenty of affordable options available. Budget hotels in China can cost as low as $30 per night. So, for 2 nights, you can expect to spend around $60.</p>
+                        
+                        <p>For a convenient stay, look for <a href="https://www.trip.com/hotels/shanghai-hotels-list-2/" rel="dofollow" class="bold-link">Shanghai hotels</a>, <a href="https://www.trip.com/hotels/hangzhou-hotels-list-17/" rel="dofollow" class="bold-link">Hangzhou hotels</a> or <a href="https://www.trip.com/hotels/beijing-hotels-list-1/" rel="dofollow" class="bold-link">Beijing hotels</a> in advance to get the best rates.</p>
+                        
+                        <div class="cost-summary">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Accommodation Type</th>
+                                        <th>Price Per Night (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Budget Hostel</td>
+                                        <td>$10 - $20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Budget Hotel</td>
+                                        <td>$30 - $50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mid-range Hotel</td>
+                                        <td>$50 - $100</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Luxury Hotel</td>
+                                        <td>$100+</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Transportation Tab -->
+                <div class="tab-pane tab-pane3">
+                    <div class="section-header">
+                        <h2><span class="section-dot transportation"></span>Transportation</h2>
+                    </div>
+                    <div class="content-box">
+                        <p>Getting around China is a breeze, thanks to its efficient transportation system. A one-way subway or train ticket can cost between $1 to $5, depending on the distance. For 3 days of transportation, you can estimate a total cost of around $20.</p>
+                        
+                        <div class="cost-summary">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Transportation Type</th>
+                                        <th>Estimated Cost (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Subway (One Way)</td>
+                                        <td>$0.30 - $1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Local Bus (One Way)</td>
+                                        <td>$0.20 - $0.50</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Taxi (Starting Fare)</td>
+                                        <td>$1.50 - $2</td>
+                                    </tr>
+                                    <tr>
+                                        <td>High-Speed Train (Between Cities)</td>
+                                        <td>$20 - $60</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Food & Drinks Tab -->
+                <div class="tab-pane tab-pane4">
+                    <div class="section-header">
+                        <h2><span class="section-dot food"></span>Food & Drinks</h2>
+                    </div>
+                    <div class="content-box">
+                        <p>When it comes to food and drinks, China offers a wide range of options to suit every budget. At budget restaurants, a meal can cost anywhere between $5 to $10. But if you're feeling adventurous, street food and convenience store meals can be even cheaper.</p>
+                        
+                        <p>As for drinks, prices can vary depending on the type and location, ranging from $1 to $5. For 3 days of eating and drinking, you can expect to spend around $100.</p>
+                        
+                        <div class="cost-summary">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Food & Drink Item</th>
+                                        <th>Estimated Cost (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Street Food Meal</td>
+                                        <td>$2 - $5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Budget Restaurant Meal</td>
+                                        <td>$5 - $10</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Mid-range Restaurant Meal</td>
+                                        <td>$10 - $20</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Bottled Water</td>
+                                        <td>$0.50 - $1</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Local Beer</td>
+                                        <td>$1 - $3</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Activities Tab -->
+                <div class="tab-pane tab-pane5">
+                    <div class="section-header">
+                        <h2><span class="section-dot activities"></span>Sightseeing & Activities</h2>
+                    </div>
+                    <div class="content-box">
+                        <p>China is a treasure trove of cultural and historical attractions. Some popular sights, like the Great Wall and the Forbidden City, may have a small entrance fee of around $10 per person. However, there are also plenty of free attractions to explore, such as local parks and temples.</p>
+                        
+                        <p>If you're up for some extra splurging, other attractions may cost a bit more, around $30 per person. For 3 days of sightseeing and activities, you can estimate a total cost of around $100.</p>
+                        
+                        <div class="cost-summary">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Attraction/Activity</th>
+                                        <th>Estimated Cost (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td>Great Wall of China</td>
+                                        <td>$6 - $15</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Forbidden City</td>
+                                        <td>$9</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Shanghai Tower Observation Deck</td>
+                                        <td>$28</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Local Parks and Gardens</td>
+                                        <td>Free - $5</td>
+                                    </tr>
+                                    <tr>
+                                        <td>Museums</td>
+                                        <td>Free - $10</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Total Cost Tab -->
+                <div class="tab-pane tab-pane6">
+                    <div class="section-header">
+                        <h2><span class="section-dot total"></span>Total Cost Summary</h2>
+                    </div>
+                    <div class="content-box">
+                        <p>So, to summarize, for a budget traveler looking for a 2-night & 3-day trip to China, you can expect to spend approximately $800. However, please keep in mind that these are rough estimates and actual costs may vary depending on your travel style, activities, and other expenses.</p>
+                        
+                        <div class="cost-summary">
+                            <table>
+                                <thead>
+                                    <tr>
+                                        <th>Expense Category</th>
+                                        <th>Estimated Cost (USD)</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr>
+                                        <td class="cost-item">Flights (Round-trip)</td>
+                                        <td>$500 - $1500</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cost-item">Accommodation (2 nights)</td>
+                                        <td>$60</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cost-item">Transportation (3 days)</td>
+                                        <td>$20</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cost-item">Food & Drinks (3 days)</td>
+                                        <td>$100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cost-item">Sightseeing & Activities (3 days)</td>
+                                        <td>$100</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cost-item">Miscellaneous</td>
+                                        <td>$20</td>
+                                    </tr>
+                                    <tr>
+                                        <td class="cost-item">TOTAL (Average)</td>
+                                        <td>$800</td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <footer>
+            <p class="notes">Note: Prices are estimated and may vary based on season, exchange rates, and personal preferences.</p>
+            
+        </footer>
+    </div>
+</body>
+</html>
