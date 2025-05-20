@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Car Rental Requirements by Country</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+            background: #f5f7fa;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, sans-serif;
+        }
+
+        .tabs-container {
+            max-width: 1000px;
+            margin: 20px auto;
+            padding: 20px;
+        }
+
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tab-button {
+            padding: 12px 20px;
+            background: #f0f2f5;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 14px;
+            color: #4a4a4a;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .tab-button:hover {
+            background: #e6e8eb;
+        }
+
+        .tab-button.active {
+            background: #0052CC;
+            color: white;
+        }
+
+        .tab-content {
+            display: none;
+            animation: fadeIn 0.3s ease;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        .tab-content.active {
+            display: block;
+        }
+
+        .requirement-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 16px;
+            box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+        }
+
+        .country-title {
+            font-size: 18px;
+            font-weight: 600;
+            color: #0052CC;
+            margin-bottom: 16px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid #f0f2f5;
+        }
+
+        .requirement-details {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 16px;
+        }
+
+        .detail-item {
+            padding: 12px;
+            background: #f8f9fa;
+            border-radius: 8px;
+        }
+
+        .detail-label {
+            font-weight: 600;
+            color: #2C3E50;
+            margin-bottom: 8px;
+            font-size: 14px;
+        }
+
+        .detail-value {
+            color: #4a4a4a;
+            line-height: 1.4;
+            font-size: 14px;
+        }
+
+        .disclaimer {
+            margin-top: 30px;
+            padding: 16px;
+            background: #fff3cd;
+            border-radius: 8px;
+            font-size: 13px;
+            color: #856404;
+            line-height: 1.5;
+        }
+
+        @media (max-width: 480px) {
+            .tabs-container {
+                padding: 12px;
+                margin: 10px;
+            }
+
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .tab-button {
+                width: 100%;
+                text-align: left;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="tabs-container">
+        <div class="tabs">
+            <button class="tab-button active">United States</button>
+            <button class="tab-button">United Kingdom</button>
+            <button class="tab-button">Singapore</button>
+            <button class="tab-button">Japan</button>
+            <button class="tab-button">Australia</button>
+            <button class="tab-button">Thailand</button>
+        </div>
+
+        <!-- United States -->
+        <div class="tab-content active">
+            <div class="requirement-card">
+                <h3 class="country-title">United States Rental Requirements</h3>
+                <div class="requirement-details">
+                    <div class="detail-item">
+                        <div class="detail-label">License Requirements</div>
+                        <div class="detail-value">Valid driver's license from home country + International Driving Permit (IDP) if license isn't in English. License must be held for at least 1 year.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Age Requirements</div>
+                        <div class="detail-value">Minimum age: 21 years old. Drivers under 25 may incur a young driver surcharge ($25-35 per day). Some specialty vehicles restricted to 25+.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Requirements</div>
+                        <div class="detail-value">Major credit card in renter's name required. Debit cards typically not accepted for security deposit. Deposit amount: $200-500 depending on vehicle type.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Required Documents</div>
+                        <div class="detail-value">Valid passport, driver's license, IDP (if applicable), credit card, and rental voucher/confirmation.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+                <!-- United Kingdom -->
+        <div class="tab-content">
+            <div class="requirement-card">
+                <h3 class="country-title">United Kingdom Rental Requirements</h3>
+                <div class="requirement-details">
+                    <div class="detail-item">
+                        <div class="detail-label">License Requirements</div>
+                        <div class="detail-value">Full valid license held for minimum 1 year. IDP required unless license is from UK/EU (pre-2021)/EEA country. UK paper counterpart no longer required.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Age Requirements</div>
+                        <div class="detail-value">Minimum age: 23 years (some companies accept 21+ with surcharge). Maximum age restrictions may apply (usually 75). Young driver surcharge applies to under 25.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Requirements</div>
+                        <div class="detail-value">Credit card in main driver's name mandatory. Deposit typically £200-400. Debit cards accepted by some companies but with higher deposits.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Required Documents</div>
+                        <div class="detail-value">Driver's license, IDP (if applicable), passport, proof of address (utility bill within 3 months), rental voucher.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Singapore -->
+        <div class="tab-content">
+            <div class="requirement-card">
+                <h3 class="country-title">Singapore Rental Requirements</h3>
+                <div class="requirement-details">
+                    <div class="detail-item">
+                        <div class="detail-label">License Requirements</div>
+                        <div class="detail-value">Valid license held for at least 1 year. IDP required if license isn't in English. Singapore license holders must have Class 3/3A license.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Age Requirements</div>
+                        <div class="detail-value">Minimum age: 21 years (most companies prefer 23+). Additional charges may apply for drivers under 25. Maximum age limit typically 65-70.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Requirements</div>
+                        <div class="detail-value">Credit card in driver's name mandatory. Minimum deposit SGD 500-1000. Debit cards not accepted for rental or deposit.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Required Documents</div>
+                        <div class="detail-value">Passport, driver's license, IDP (if applicable), credit card, rental voucher. Work permit/Employment pass for certain nationalities.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Japan -->
+        <div class="tab-content">
+            <div class="requirement-card">
+                <h3 class="country-title">Japan Rental Requirements</h3>
+                <div class="requirement-details">
+                    <div class="detail-item">
+                        <div class="detail-label">License Requirements</div>
+                        <div class="detail-value">Valid license + IDP (Geneva Convention 1949). Japanese translation required for licenses from certain countries. IDP must be obtained before arrival.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Age Requirements</div>
+                        <div class="detail-value">Minimum age: 18 (most companies require 21+). Some vehicle categories restricted to 23+. No common upper age limit but restrictions may apply.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Requirements</div>
+                        <div class="detail-value">Credit card in renter's name required. Typical deposit ¥30,000-50,000. Some companies accept cash payments but credit card still needed for deposit.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Required Documents</div>
+                        <div class="detail-value">Original driver's license, IDP, passport, credit card, rental voucher. Some companies require proof of return flight/travel plans.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Australia -->
+        <div class="tab-content">
+            <div class="requirement-card">
+                <h3 class="country-title">Australia Rental Requirements</h3>
+                <div class="requirement-details">
+                    <div class="detail-item">
+                        <div class="detail-label">License Requirements</div>
+                        <div class="detail-value">Full valid license held for minimum 1 year. IDP required if license isn't in English. P plate restrictions may apply in some states.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Age Requirements</div>
+                        <div class="detail-value">Minimum age: 21 (surcharge applies until 25). Some premium vehicles restricted to 25+. Maximum age typically 75, but varies by company.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Requirements</div>
+                        <div class="detail-value">Credit card in renter's name required. Deposit typically AUD 200-500. Some companies accept debit cards with higher deposit requirements.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Required Documents</div>
+                        <div class="detail-value">Driver's license, IDP (if applicable), passport, credit card, rental voucher. Additional ID may be required for certain vehicle categories.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thailand -->
+        <div class="tab-content">
+            <div class="requirement-card">
+                <h3 class="country-title">Thailand Rental Requirements</h3>
+                <div class="requirement-details">
+                    <div class="detail-item">
+                        <div class="detail-label">License Requirements</div>
+                        <div class="detail-value">Valid license + IDP mandatory for all foreign licenses. Thai license holders must have valid domestic license for intended vehicle class.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Age Requirements</div>
+                        <div class="detail-value">Minimum age: 21 years. Some luxury vehicles restricted to 23+. Young driver surcharges may apply for under 25.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Payment Requirements</div>
+                        <div class="detail-value">Credit card in renter's name required. Deposit typically THB 10,000-20,000. Cash payments accepted by some local companies but credit card needed for deposit.</div>
+                    </div>
+                    <div class="detail-item">
+                        <div class="detail-label">Required Documents</div>
+                        <div class="detail-value">Passport, driver's license, IDP, credit card, rental voucher. Some companies may require proof of accommodation or return ticket.</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="disclaimer">
+            <strong>Important Notice:</strong> Requirements may vary by rental company, location, and vehicle type. Age restrictions, payment methods, and document requirements can change without notice. Additional fees may apply for young drivers, additional drivers, or special circumstances. Please verify specific requirements during booking and with the rental company directly.
+        </div>
+    </div>
+
+    <script>
+        document.querySelectorAll('.tab-button').forEach((button, index) => {
+            button.addEventListener('click', () => {
+                // Remove active class from all buttons and contents
+                document.querySelectorAll('.tab-button').forEach(btn => {
+                    btn.classList.remove('active');
+                });
+                document.querySelectorAll('.tab-content').forEach(content => {
+                    content.classList.remove('active');
+                });
+                
+                // Add active class to clicked button and corresponding content
+                button.classList.add('active');
+                document.querySelectorAll('.tab-content')[index].classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
+        
+        
+        
+        
