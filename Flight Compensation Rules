@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Airline Flight Delay Compensation Rules</title>
+    <style>
+        :root {
+            --primary-color: #2d6cdf;
+            --secondary-color: #6c5ce7;
+            --background-color: #f9fafb;
+            --text-color: #2d3748;
+            --tab-active: #ffffff;
+            --tab-inactive: #edf2f7;
+            --border-color: #e2e8f0;
+            --highlight-bg: #ebf4ff;
+            --highlight-border: #4299e1;
+            --note-bg: #f7fafc;
+            --note-border: #4299e1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        }
+        
+        body {
+            background-color: var(--background-color);
+            color: var(--text-color);
+            line-height: 1.7;
+            padding: 20px;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 40px auto;
+            background-color: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.05);
+            overflow: hidden;
+        }
+        
+        .page-title {
+            font-size: 2.2rem;
+            margin-bottom: 10px;
+            font-weight: 700;
+            color: var(--primary-color);
+            text-align: center;
+            padding: 30px 20px 10px;
+        }
+        
+        .section-title {
+            font-size: 1.6rem;
+            color: var(--primary-color);
+            margin: 30px 0 20px;
+            padding-bottom: 8px;
+            border-bottom: 1px solid var(--border-color);
+            font-weight: 600;
+        }
+        
+        .subsection-title {
+            font-size: 1.3rem;
+            color: var(--primary-color);
+            margin: 25px 0 15px;
+            font-weight: 600;
+        }
+        
+        .tabs {
+            display: flex;
+            flex-wrap: wrap;
+            background-color: var(--tab-inactive);
+            border-bottom: 1px solid var(--border-color);
+        }
+        
+        .tab-input {
+            position: absolute;
+            opacity: 0;
+        }
+        
+        .tab-label {
+            padding: 16px 24px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            color: #64748b;
+        }
+        
+        .tab-label:hover {
+            color: var(--primary-color);
+            background-color: rgba(255, 255, 255, 0.8);
+        }
+        
+        .tab-content {
+            display: none;
+            padding: 30px;
+            width: 100%;
+            order: 1;
+        }
+        
+        .tab-input:checked + .tab-label {
+            background-color: var(--tab-active);
+            color: var(--primary-color);
+            border-bottom: 3px solid var(--primary-color);
+        }
+        
+        .tab-input:checked + .tab-label + .tab-content {
+            display: block;
+        }
+        
+        ul, ol {
+            margin-left: 20px;
+            margin-bottom: 25px;
+        }
+        
+        li {
+            margin-bottom: 12px;
+        }
+        
+        .highlight {
+            background-color: var(--highlight-bg);
+            padding: 2px 6px;
+            border-radius: 4px;
+            color: var(--primary-color);
+            font-weight: 500;
+            border-left: 2px solid var(--highlight-border);
+        }
+        
+        .compensation-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 25px 0;
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+            border-radius: 8px;
+            overflow: hidden;
+        }
+        
+        .compensation-table th, .compensation-table td {
+            padding: 14px 18px;
+            text-align: left;
+        }
+        
+        .compensation-table th {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+        
+        .compensation-table tr:nth-child(even) {
+            background-color: #f8fafc;
+        }
+        
+        .compensation-table tr:hover {
+            background-color: #f1f5f9;
+        }
+        
+        .note {
+            background-color: var(--note-bg);
+            padding: 18px;
+            border-left: 4px solid var(--note-border);
+            margin: 25px 0;
+            border-radius: 0 8px 8px 0;
+        }
+        
+        .disclaimer {
+            font-size: 0.85rem;
+            margin-top: 40px;
+            color: #718096;
+            padding: 0 30px 30px;
+            text-align: center;
+        }
+        
+        p {
+            margin-bottom: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            .tab-label {
+                padding: 12px 16px;
+                font-size: 0.9rem;
+            }
+            
+            .tab-content {
+                padding: 20px;
+            }
+            
+            .page-title {
+                font-size: 1.8rem;
+                padding: 20px 15px 5px;
+            }
+            
+            .section-title {
+                font-size: 1.4rem;
+                margin: 25px 0 15px;
+            }
+            
+            .subsection-title {
+                font-size: 1.2rem;
+                margin: 20px 0 12px;
+            }
+            
+            .container {
+                margin: 20px auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        
+        
+        <div class="tabs">
+            <input type="radio" name="tabs" id="tab1" class="tab-input" checked>
+            <label for="tab1" class="tab-label">EU Regulations</label>
+            <div class="tab-content">
+                <div class="section-title">EU Flight Compensation Rules (EC 261/2004)</div>
+                
+                <p>The European Union has some of the world's strongest passenger protection laws under Regulation EC 261/2004. These rules apply to:</p>
+                <ul>
+                    <li>Flights departing from any EU airport, regardless of airline</li>
+                    <li>Flights arriving at an EU airport operated by an EU-based airline</li>
+                </ul>
+                
+                <div class="section-title">Compensation Amounts</div>
+                <p>Compensation is based on flight distance:</p>
+                
+                <table class="compensation-table">
+                    <tr>
+                        <th>Flight Distance</th>
+                        <th>Delay Length</th>
+                        <th>Compensation</th>
+                    </tr>
+                    <tr>
+                        <td>Flights under 1,500 km</td>
+                        <td>3+ hours</td>
+                        <td>€250</td>
+                    </tr>
+                    <tr>
+                        <td>Flights between 1,500-3,500 km</td>
+                        <td>3+ hours</td>
+                        <td>€400</td>
+                    </tr>
+                    <tr>
+                        <td>Flights over 3,500 km within/between EU countries</td>
+                        <td>3+ hours</td>
+                        <td>€400</td>
+                    </tr>
+                    <tr>
+                        <td>Flights over 3,500 km involving non-EU countries</td>
+                        <td>4+ hours</td>
+                        <td>€600</td>
+                    </tr>
+                </table>
+                
+                <div class="section-title">Important Facts About EU Compensation</div>
+                <ul>
+                    <li>Airlines must provide <span class="highlight">care and assistance</span> (meals, refreshments, accommodation if necessary) during long delays regardless of the cause</li>
+                    <li>Compensation is not due if the delay was caused by <span class="highlight">extraordinary circumstances</span> outside the airline's control (severe weather, political instability, security risks, unexpected flight safety issues)</li>
+                    <li>Technical issues are generally <span class="highlight">not considered extraordinary circumstances</span> following Court of Justice of the European Union rulings</li>
+                    <li>The right to compensation <span class="highlight">does not expire quickly</span> - you can claim for flights up to 6 years ago in some EU countries</li>
+                    <li>Airlines must inform passengers of their rights during delays</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Post-Brexit Update:</strong> The UK has retained EC 261/2004 in domestic law, so similar rules apply for flights from UK airports or to UK airports on UK/EU carriers.
+                </div>
+            </div>
+            
+            <input type="radio" name="tabs" id="tab2" class="tab-input">
+            <label for="tab2" class="tab-label">US Regulations</label>
+            <div class="tab-content">
+                <div class="section-title">US Flight Delay Compensation Rules</div>
+                
+                <p>Unlike the EU, the United States does not have federal regulations that require airlines to compensate passengers for delays. However, there are some important protections:</p>
+                
+                <div class="section-title">Department of Transportation (DOT) Rules</div>
+                <ul>
+                    <li>Airlines must follow their own <span class="highlight">Customer Service Plans</span>, which outline how they handle delays</li>
+                    <li>For <span class="highlight">tarmac delays</span>, airlines cannot keep passengers on a grounded aircraft for more than 3 hours (domestic) or 4 hours (international) without allowing them to deplane</li>
+                    <li>During tarmac delays, airlines must provide <span class="highlight">food, water, working lavatories, and medical attention if needed</span></li>
+                    <li>Airlines that violate tarmac delay rules can face fines up to <span class="highlight">$27,500 per passenger</span></li>
+                </ul>
+                
+                <div class="section-title">Airline-Specific Policies</div>
+                
+                <div class="subsection-title">Delta Air Lines</div>
+                <ul>
+                    <li>Offers <span class="highlight">Delta Care</span> during significant delays, which may include meal vouchers for delays over 4 hours</li>
+                    <li>Provides hotel accommodations and transportation for overnight delays when not in a passenger's home city</li>
+                    <li>May offer compensation in the form of <span class="highlight">Delta travel vouchers</span> for significant service failures, determined on a case-by-case basis</li>
+                </ul>
+                
+                <div class="subsection-title">American Airlines</div>
+                <ul>
+                    <li>For delays over 4 hours, may provide <span class="highlight">meal vouchers</span></li>
+                    <li>For overnight delays, offers <span class="highlight">hotel accommodations</span> if the delay is within their control</li>
+                    <li>Compensation for service failures typically comes as <span class="highlight">AAdvantage miles or travel vouchers</span></li>
+                </ul>
+                
+                <div class="subsection-title">United Airlines</div>
+                <ul>
+                    <li>Provides meal vouchers for delays over 3 hours</li>
+                    <li>Offers hotel accommodations for overnight delays caused by factors within their control</li>
+                    <li>May issue <span class="highlight">Electronic Travel Certificates (ETCs)</span> as compensation for significant service failures</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Important:</strong> In the US, compensation for delays is largely at the discretion of the airline. Always check the airline's Contract of Carriage and Customer Service Plan for specific policies.
+                </div>
+            </div>
+            
+            <input type="radio" name="tabs" id="tab3" class="tab-input">
+            <label for="tab3" class="tab-label">Canadian Rules</label>
+            <div class="tab-content">
+                <div class="section-title">Canadian Air Passenger Protection Regulations (APPR)</div>
+                
+                <p>Canada introduced comprehensive passenger rights regulations in 2019, providing specific compensation for delays based on the airline's control over the situation:</p>
+                
+                <div class="section-title">Compensation for Delays Within Airline Control</div>
+                <table class="compensation-table">
+                    <tr>
+                        <th>Delay Length</th>
+                        <th>Large Airlines</th>
+                        <th>Small Airlines</th>
+                    </tr>
+                    <tr>
+                        <td>3-6 hours</td>
+                        <td>CAD $400</td>
+                        <td>CAD $125</td>
+                    </tr>
+                    <tr>
+                        <td>6-9 hours</td>
+                        <td>CAD $700</td>
+                        <td>CAD $250</td>
+                    </tr>
+                    <tr>
+                        <td>9+ hours</td>
+                        <td>CAD $1,000</td>
+                        <td>CAD $500</td>
+                    </tr>
+                </table>
+                
+                <div class="section-title">Key Facts About Canadian Regulations</div>
+                <ul>
+                    <li>Airlines must provide <span class="highlight">standards of treatment</span> during delays, including food, drink, and communication access</li>
+                    <li>For delays over 8 hours, airlines must provide <span class="highlight">accommodation</span></li>
+                    <li>Passengers must file claims with the airline first and airlines have <span class="highlight">30 days to respond</span></li>
+                    <li>No compensation is required for delays caused by <span class="highlight">safety issues or factors outside airline control</span></li>
+                    <li>Airlines must <span class="highlight">rebook passengers</span> on the next available flight, including competitors' flights in some cases</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Important Update:</strong> In 2022, the Canadian Transportation Agency clarified that mechanical issues are generally considered within the airline's control for compensation purposes, unless they are discovered during pre-flight checks and affect safety.
+                </div>
+            </div>
+            
+            <input type="radio" name="tabs" id="tab4" class="tab-input">
+            <label for="tab4" class="tab-label">International Rules</label>
+            <div class="tab-content">
+                <div class="section-title">International Air Transport Rules</div>
+                
+                <p>Outside the EU, US, and Canada, passenger rights vary significantly by country. However, some international standards and agreements exist:</p>
+                
+                <div class="section-title">Montreal Convention</div>
+                <ul>
+                    <li>Applies to international flights between signatory countries (over 130 nations)</li>
+                    <li>Does not specifically address compensation for delays</li>
+                    <li>Allows passengers to claim for <span class="highlight">damages resulting from delays</span> up to approximately 4,700 SDR (Special Drawing Rights, about $6,500 USD)</li>
+                    <li>Damages must be <span class="highlight">actual, documented financial losses</span> (missed prepaid accommodations, business opportunities, etc.)</li>
+                    <li>Airlines can avoid liability if they took <span class="highlight">all reasonable measures</span> to prevent the delay</li>
+                </ul>
+                
+                <div class="section-title">Country-Specific Regulations</div>
+                
+                <div class="subsection-title">Brazil</div>
+                <ul>
+                    <li>For delays over 4 hours, airlines must provide <span class="highlight">accommodation, meals, and communication</span></li>
+                    <li>Airlines must offer rebooking or full refund options</li>
+                    <li>Material damages from delays can be claimed through consumer protection agencies</li>
+                </ul>
+                
+                <div class="subsection-title">China</div>
+                <ul>
+                    <li>For delays over 4 hours, airlines must provide <span class="highlight">meals</span></li>
+                    <li>For overnight delays, <span class="highlight">accommodation</span> must be provided</li>
+                    <li>No standardized financial compensation system for delays</li>
+                </ul>
+                
+                <div class="subsection-title">Australia</div>
+                <ul>
+                    <li>No specific government regulations for delay compensation</li>
+                    <li>Passenger rights are governed by <span class="highlight">Australian Consumer Law</span> and airline conditions of carriage</li>
+                    <li>Qantas and Virgin Australia typically offer meal vouchers for delays over 2 hours and accommodation for overnight delays</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Important:</strong> Always check the specific regulations of the departure and arrival countries, as well as the operating airline's conditions of carriage.
+                </div>
+            </div>
+            
+            <input type="radio" name="tabs" id="tab5" class="tab-input">
+            <label for="tab5" class="tab-label">Tips & Facts</label>
+            <div class="tab-content">
+                <div class="section-title">Essential Tips for Claiming Compensation</div>
+                
+                <ul>
+                    <li><strong>Document everything:</strong> Save boarding passes, receipts for expenses, communications from the airline, and take photos of information boards showing delays</li>
+                    <li><strong>Request written confirmation:</strong> Ask airline staff for written documentation of the delay and its cause</li>
+                    <li><strong>File claims promptly:</strong> While time limits vary by jurisdiction, filing sooner is always better</li>
+                    <li><strong>Be specific:</strong> Include flight numbers, dates, and detailed information about the delay in your claim</li>
+                    <li><strong>Appeal rejections:</strong> If your claim is rejected, you can appeal to national enforcement bodies or consider legal action</li>
+                </ul>
+                
+                <div class="section-title">Interesting Facts About Flight Delays</div>
+                
+                <ul>
+                    <li>The EU processes approximately <span class="highlight">600,000 compensation claims</span> annually under EC 261/2004</li>
+                    <li>Only about <span class="highlight">15% of eligible passengers</span> actually claim compensation they're entitled to</li>
+                    <li>The <span class="highlight">most common cause</span> of flight delays globally is adverse weather conditions</li>
+                    <li>Airlines sometimes <span class="highlight">reclassify technical issues</span> as safety concerns to avoid paying compensation</li>
+                    <li>The <span class="highlight">average processing time</span> for EU compensation claims is 2-3 months</li>
+                    <li>Some airlines have been known to <span class="highlight">automatically reject first-time claims</span>, hoping passengers won't appeal</li>
+                    <li>In the US, airlines voluntarily paid over <span class="highlight">$3.8 billion</span> in compensation and amenities to passengers in 2019</li>
+                    <li>The <span class="highlight">most delayed airports</span> in Europe are typically London Gatwick, Frankfurt, and Paris Charles de Gaulle</li>
+                    <li>Airlines sometimes <span class="highlight">schedule "buffer time"</span> into flight durations to improve on-time performance statistics</li>
+                </ul>
+                
+                <div class="note">
+                    <strong>Pro Tip:</strong> Third-party claim companies can handle your compensation claim but typically charge 25-30% of the awarded amount. You can file claims directly with airlines at no cost.
+                </div>
+            </div>
+        </div>
+        
+        <div class="disclaimer">
+            <p>Disclaimer: This information is provided for general guidance only and may not reflect the most current legal developments. The rules and amounts are subject to change. Always verify the current regulations with official sources or legal professionals before making claims. </p>
+        </div>
+    </div>
+</body>
+</html>
