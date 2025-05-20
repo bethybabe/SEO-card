@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Miles Accumulation Guide</title>
+    <style>
+        /* Reset Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Container Styles */
+        .container {
+            display: flex;
+            flex-wrap: nowrap;
+            overflow-x: auto;
+            padding: 20px;
+            gap: 15px;
+            background: #f0f2f5;
+        }
+
+        /* Card Styles */
+        .card {
+            flex: 0 0 auto;
+            min-width: 280px;
+            max-width: 350px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+            transition: transform 0.3s ease;
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        /* Card Hover Effect */
+        .card:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Title Styles */
+        .card-title {
+            color: #2c3e50;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            border-left: 4px solid #3498db;
+            padding-left: 10px;
+        }
+
+        /* Content List Styles */
+        .content-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+
+        /* List Item Styles */
+        .content-item {
+            background: #ecf0f1;
+            padding: 10px 15px;
+            border-radius: 6px;
+            font-size: 0.9rem;
+            line-height: 1.4;
+            transition: background 0.3s;
+        }
+
+        /* Hover Effect for List Items */
+        .content-item:hover {
+            background: #3498db;
+            color: white;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: row;
+                overflow-x: auto;
+            }
+            .card {
+                min-width: 220px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 10px;
+                gap: 10px;
+            }
+            .card-title {
+                font-size: 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="card">
+            <div class="card-title">1. Fly with Partner Airlines</div>
+            <ul class="content-list">
+                <li><strong>Direct Flight Accumulation:</strong> Join airline programs like Asia Miles (Cathay Pacific) or SkyMiles (Delta). Business class earns 2x economy miles</li>
+                <li><strong>Airline Alliances:</strong> Focus on Star Alliance (United, Singapore Airlines), SkyTeam (Delta, China Eastern), or Oneworld (Qatar Airways, British Airways)</li>
+                <li><strong>Example:</strong> Fly EVA Air (Star Alliance) and credit to United Airlines' MileagePlus </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">2. Co-Branded Credit Cards</div>
+            <ul class="content-list">
+                <li><strong>Travel-Focused Cards:</strong> HSBC EveryMile or Citi AAdvantage cards </li>
+                <li><strong>Bonus Categories:</strong> Earn 3-5x miles on dining/airline-related expenses</li>
+                <li><strong>Sign-up Bonus:</strong> 50,000 miles after $3,000 spend in 3 months</li>
+                <li><strong>Transfer Ratio:</strong> 20:1 for specific airline programs </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">3. Partner Program Spending</div>
+            <ul class="content-list">
+                <li><strong>Hotels & Rentals:</strong> Marriott/Hilton bookings earn 500+ bonus miles </li>
+                <li><strong>Retail Spending:</strong> DFS/Sasa purchases accumulate Asia Miles </li>
+                <li><strong>Platform Integration:</strong> Input frequent flyer number on Trip.com during checkout for double accumulation </li>
+            </ul>
+        </div>
+
+        <div class="card">
+            <div class="card-title">4. Points Conversion</div>
+            <ul class="content-list">
+                <li><strong>Flexible Transfers:</strong> Amex MR points convert 1:1 to airline miles </li>
+                <li><strong>Family Pooling:</strong> Asia Miles allows annual transfers up to 120,000 miles </li>
+                <li><strong>Validity Rules:</strong> 18-36 months activity window (elite status extends validity)</li>
+                <li><strong>Optimal Redemption:</strong> 70,000 Asia Miles upgrades long-haul flights to business class </li>
+            </ul>
+        </div>
+    </div>
+</body>
+</html>
