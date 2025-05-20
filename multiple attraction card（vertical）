@@ -1,0 +1,169 @@
+<style>
+    #tg-header .top {
+        max-width: 1200px;
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+    }
+
+    #tg-header .top > div {
+        width: 48%;
+        display: inline;
+    }
+
+    #tg-header .top .info > span {
+        width: 100%;
+        display: inline-block;
+    }
+
+    #tg-header .right-box {
+        padding: 50px;
+        border-radius: 5px;
+    }
+
+    #tg-header .right-box {
+        background-color: #f5f5f5;
+    }
+
+    #tg-header .top .cover {
+        width: 100%;
+        border-radius: 10px;
+    }
+
+    #tg-header button {
+        width: 100%;
+        padding: 20px 0;
+        margin: 10px 0;
+        border-radius: 5px;
+        background-image: linear-gradient(270deg, rgb(30, 84, 249) 0%, rgb(50, 100, 255) 100%);
+        border: none;
+    }
+
+    #tg-header button a {
+        color: #ffffff;
+        text-decoration: none;
+        font-size: 16px;
+        font-weight: 600;
+        width: 100%;
+        display: inline-block;
+    }
+
+    #tg-header h1 {
+        font-size: 28px !important;
+        margin: 0 0 15px 0 !important;
+    }
+
+    #tg-header .about p {
+        font-size: 14px;
+        line-height: 1.5;
+    }
+
+    #tg-header .info span {
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+    @media only screen and (max-width: 960px) {
+        #tg-header .top {
+            display: block;
+        }
+
+        #tg-header .top > div {
+            display: block;
+            width: 100%;
+            margin-bottom: 10px;
+        }
+    }
+</style>
+
+<div id="tg-header">
+    <!-- Shanghai Section -->
+    <div class="top">
+        <div class="left">
+            <img class="cover" src="https://ak-d.tripcdn.com/images/010691200097uy8rk36FE_C_670_376_Q70.webp?proc=source%2ftrip&proc=source%2ftrip">
+        </div>
+        <div class="right">
+            <div class="right-box">
+                <h3>Shanghai</h3>
+                <div class="about">
+                    <p>
+                        If you love a mix of old and new, Shanghai will steal your heart. Walk along the Bund at sunset to see the city light up across the river, then lose yourself in the quiet paths of Yu Garden early in the morning. The French Concession feels like a different world with its leafy streets and cute cafes.
+                    </p>
+                </div>
+                <button><a href="https://www.trip.com/travel-guide/attraction/shanghai-2/tourist-attractions/">Check More about Shanghai</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Beijing Section -->
+    <div class="top">
+        <div class="left">
+            <img class="cover" src="https://ak-d.tripcdn.com/images/0100j1200046x94ebB936_C_880_350_R5.jpg?proc=source%2ftrip">
+        </div>
+        <div class="right">
+            <div class="right-box">
+                <h3>Beijing</h3>
+                <div class="about">
+                    <p>
+                        Beijing is where China's history comes alive. The Great Wall will take your breath away - head to Mutianyu to dodge the crowds and get the best photos. The Forbidden City is massive and mind-blowing; you'll need a full day to explore it properly.
+                    </p>
+                </div>
+                <button><a href="https://us.trip.com/travel-guide/destination/beijing-1/">Check More about Beijing</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Guangzhou Section -->
+    <div class="top">
+        <div class="left">
+            <img class="cover" src="https://ak-d.tripcdn.com/images/100c180000014rkpq4C68_C_880_350_R5.jpg">
+        </div>
+        <div class="right">
+            <div class="right-box">
+                <h3>Guangzhou</h3>
+                <div class="about">
+                    <p>
+                        Come hungry to Guangzhou - this city lives for food. Start your day with dim sum (the locals call it yum cha), then walk it off around Shamian Island's old European buildings. The Canton Tower looks amazing at night when it's all lit up.
+                    </p>
+                </div>
+                <button><a href="https://us.trip.com/travel-guide/destination/guangzhou-152/">Check More about Guangzhou</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Shenzhen Section -->
+    <div class="top">
+        <div class="left">
+            <img class="cover" src="https://ak-d.tripcdn.com/images/10051f000001gsu9xBA0E_C_880_350_R5.jpg">
+        </div>
+        <div class="right">
+            <div class="right-box">
+                <h3>Shenzhen</h3>
+                <div class="about">
+                    <p>
+                        It's crazy to think Shenzhen was just a fishing village 40 years ago. Now it's full of cool spots like OCT Loft, where old factories have turned into art galleries and coffee shops. Window of the World is kind of cheesy but fun - where else can you see the Eiffel Tower and Egyptian pyramids in one afternoon?
+                    </p>
+                </div>
+                <button><a href="https://www.trip.com/travel-guide/destination/shenzhen-26/">Check More about Shenzhen</a></button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Hangzhou Section -->
+    <div class="top">
+        <div class="left">
+            <img class="cover" src="https://ak-d.tripcdn.com/images/100h180000013qm0m8FCA_C_880_350_R5.jpg">
+        </div>
+        <div class="right">
+            <div class="right-box">
+                <h3>Hangzhou</h3>
+                <div class="about">
+                    <p>
+                        Marco Polo wasn't kidding when he fell in love with Hangzhou. West Lake is the star of the show - rent a boat or just walk around its shores to see why Chinese artists have been painting it for centuries. Lingyin Temple is worth visiting just to see the giant Buddha carvings in the cliffs.
+                    </p>
+                </div>
+                <button><a href="https://www.trip.com/travel-guide/destination/hangzhou-14/">Check More about Hangzhou</a></button>
+            </div>
+  </div>
+</div></div>
