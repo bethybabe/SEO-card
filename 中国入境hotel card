@@ -1,0 +1,95 @@
+<style>
+ .newuser-incoming-banner-component {
+width: 100%;
+max-width: 1160px;
+margin: 0 auto;
+display: flex;
+align-items: center;
+justify-content: center;
+box-sizing: border-box;
+ }
+.newuser-incoming-banner-container {
+padding: 12px;
+display: grid;
+grid-template-columns: repeat(2, 1fr);
+grid-template-rows: auto;
+gap: 8px;
+ @media (max-width: 768px) {
+grid-template-columns: repeat(1, 1fr);
+gap: 4px;
+ }
+ }
+.newuser-incoming-banner {
+ }
+.newuser-incoming-banner img {
+width: 100%;
+height: auto;
+ }
+</style>
+<div class="newuser-incoming-banner-component">
+<div class="newuser-incoming-banner-container">
+<a
+href="https://www.trip.com/hotels/city/cn/shanghai.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o13512000ht7hdai9B89.png"
+alt="shanghai"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/beijing.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o13i12000ht7hjrhFCF5.png"
+alt="beijing"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/guangzhou.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o12j12000ht7hfv1EE52.png"
+alt="guangzhou"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/chengdu.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o13k12000ht7hextED5F.png"
+alt="chengdu"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/shenzhen.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o12b12000ht7hgj235FC.png"
+alt="shenzhen"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/qingdao.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o14e12000ht7hd2t2B19.png"
+alt="qingdao"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/dalian.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o10k12000ht7hdic0100.png"
+alt="dalian"
+/></a>
+<a
+href="https://www.trip.com/hotels/city/cn/harbin.html"
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o13b12000ht7hjjrBC8C.png"
+alt="harbin"
+/></a>
+<a
+href="https://www.trip.com/hotels/country/china.html/ "
+class="newuser-incoming-banner"
+><img
+src="https://dimg04.tripcdn.com/images/1o11x12000ht7j9uo89E1.png"
+alt="more destinations"
+/></a>
+</div>
+</div>
